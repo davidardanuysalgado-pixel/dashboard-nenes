@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ca"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Aura i Èlia</title>
+<style>
+body{margin:0;background:#EEF3F8;color:#1E2A44;font-family:"Avenir Next","Trebuchet MS",Helvetica,sans-serif;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+#top{display:flex;align-items:center;padding:8px 22px;background:#1E2A44;color:#fff}
+#clock{font-size:54px;font-weight:700;width:160px}
+#dt{flex:1}#dt b{font-size:26px;display:block}#dt span{font-size:18px;opacity:.8}
+#nx{background:#FFC93C;color:#1E2A44;border-radius:14px;padding:8px 14px;font-weight:700;font-size:18px;max-width:310px}
+nav{display:flex;background:#fff;border-bottom:3px solid #1E2A44}
+nav div{flex:1;text-align:center;padding:12px;font-size:20px;font-weight:700;cursor:pointer}
+nav .on{background:#FFC93C}
+.v{display:none;padding:12px}.v.on{display:block}
+.cols{display:flex}
+.col{flex:1;margin:0 6px;background:#fff;border-radius:18px;padding:14px;border-top:10px solid #999}
+.hd{font-size:26px;display:flex;align-items:center;margin-bottom:8px}.hd small{font-size:16px;margin-left:8px;opacity:.7}
+.ch{margin-left:auto;font-size:20px;font-weight:700}
+.bar{height:16px;background:#E3E8F0;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%}
+.fr{font-weight:700;font-size:17px;margin-top:10px;color:#5A6785}.fr.now{color:#E5484D}
+.t{display:flex;align-items:center;padding:4px 8px;margin:3px 0;border-radius:12px;background:#F2F5FA;font-size:17px;cursor:pointer}
+.t i{font-style:normal;font-size:22px;width:34px}.t.d{background:#D9F5E6;text-decoration:line-through;opacity:.75}.t .k{margin-left:auto;font-size:24px}
+.s{font-size:16px;padding:3px 10px;border-radius:8px}.s.on{background:#FFC93C;font-weight:700}.s.ac{background:#E7E1FA}
+.goal{margin:10px 6px 0;background:#fff;border-radius:18px;padding:12px 16px;font-size:19px}
+.goal .bar{margin-top:6px;position:relative}
+.wk{display:flex;margin:8px 0}.wd{flex:1;text-align:center;font-size:15px}
+.wb{height:170px;background:#E3E8F0;border-radius:8px;margin:0 4px 4px;position:relative}
+.wb span{position:absolute;bottom:0;left:0;right:0;border-radius:8px}.wd small{display:block;opacity:.7}.tdy b{color:#E5484D}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th{font-size:15px;padding:4px}
+td{height:62px;border:1px solid #E3E8F0;vertical-align:top;font-size:15px;padding:2px 4px}td.td{background:#FFF3C4}
+td div{font-size:14px;line-height:1.1}
+.ef,.et,.eb,.ee{display:inline-block;border-radius:6px;padding:0 2px;margin-right:2px}
+.ef{background:#FFD9DA}.et{background:#FFE6B3}.eb{background:#F9D5EC}.ee{background:#D5E8F9}
+.dt{display:inline-block;width:9px;height:9px;border-radius:5px;margin-right:2px}
+.nv{padding:0 14px;cursor:pointer}
+.ev{font-size:16px;padding:4px 0;border-bottom:1px solid #EEF1F6}
+button,input,textarea{font-size:18px;padding:8px 12px;margin:4px 2px;border-radius:10px;border:2px solid #1E2A44;background:#fff}
+button{background:#FFC93C;font-weight:700}
+.tg{-webkit-column-count:2;column-count:2;-webkit-column-gap:10px;column-gap:10px}
+.fg{-webkit-column-break-inside:avoid;break-inside:avoid;page-break-inside:avoid}
+.rw{position:relative;height:22px;margin:2px 0}.rw>b{position:absolute;left:0;top:3px;width:40px;font-size:14px}
+.tk{position:absolute;left:44px;right:0;top:0;bottom:0;background:#F2F5FA;border-radius:6px;overflow:hidden}
+.bl{position:absolute;top:0;bottom:0;font-size:12px;line-height:22px;overflow:hidden;white-space:nowrap;text-align:center;color:#fff}
+.sl{background:#C9D3E6}.sc{background:#FFC93C;color:#1E2A44}
+.nw{position:absolute;top:0;bottom:0;width:2px;background:#E5484D}
+.ax{position:relative;height:14px;margin-left:44px;font-size:12px}.ax span{position:absolute;margin-left:-8px}
+#rot{display:none}@media (orientation:portrait){#rot{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background:#1E2A44;color:#fff;z-index:9;text-align:center;font-size:30px;padding-top:40%}}
+</style></head><body>
+<div id="top"><div id="clock"></div><div id="dt"></div><div id="nx"></div></div>
+<div id="rot">🔄 Gira l’iPad en horitzontal</div>
+<nav><div id="n0" class="on" onclick="tab(0)">☀️ Avui</div><div id="n1" onclick="tab(1)">📋 Setmana</div><div id="n2" onclick="tab(2)">⏰ Horaris</div><div id="n3" onclick="tab(3)">📅 Calendari</div><div id="n4" onclick="tab(4)">🔒 Pares</div></nav>
+<div id="v0" class="v on"></div><div id="v1" class="v"></div><div id="v2" class="v"></div><div id="v3" class="v"></div><div id="v4" class="v"></div>
+<script>
+/* ============ CONFIGURACIÓ (edita aquí) ============ */
+var C={
+ pin:'1234', goal:80, premi:'Plan familiar el cap de setmana',
+ nenes:[{id:'aura',nom:'Aura',nai:'2017-12-23',col:'#7B5CD6'},{id:'elia',nom:'Èlia',nai:'2021-03-20',col:'#1FA37A'}],
+ franges:[['Matí','☀️'],['Migdia','🍽️'],['Tarda','🎒'],['Nit','🌙']],
+ /* tasca: [id, text, icona, franja(0-3), dies opcional: 1=dl ... 7=dg] */
+ tasques:{
+  aura:[['a1','Fer el llit','🛏️',0],['a2','Vestir-me','👕',0],['a3','Esmorzar','🍞',0],['a4','Rentar-me les dents','😁',0],['a5','Preparar la motxilla','🎒',0,'12345'],
+   ['a6','Ajudar a parar taula','🍽️',1,'67'],['a7','Berenar','🍎',2,'12345'],['a8','Deures','✏️',2,'12345'],['a9','Llegir 15 minuts','📖',2],['a10','Recollir les joguines','📦',2],
+   ['a11','Dutxa','🚿',3,'135'],['a12','Rentar-me les dents','😁',3],['a13','Anar a dormir','🌙',3]],
+  elia:[['e1','Fer el llit amb ajuda','🛏️',0],['e2','Vestir-me','👕',0],['e3','Esmorzar','🍞',0],['e4','Rentar-me les dents','😁',0],
+   ['e5','Ajudar a parar taula','🍽️',1,'67'],['e6','Berenar','🍎',2,'12345'],['e7','Dibuixar o pintar','🎨',2],['e8','Recollir les joguines','📦',2],
+   ['e9','Bany','🛁',3,'135'],['e10','Rentar-me les dents','😁',3],['e11','Conte i a dormir','📖',3]]},
+ /* horari escolar dl-dv (EXEMPLE: canvia'l pel real): [inici, fi, text] */
+ horari:{aura:[['9:00','11:00','Classe'],['11:00','11:30','Pati'],['11:30','12:30','Classe'],['12:30','15:00','Dinar i lleure'],['15:00','16:30','Classe']],
+  elia:[['9:00','11:00','Classe'],['11:00','11:30','Pati'],['11:30','12:30','Classe'],['12:30','15:00','Dinar i migdiada'],['15:00','16:30','Classe']]},
+ /* extraescolars (EXEMPLES): [nena, dies, inici, fi, activitat, lloc] */
+ act:[['aura','1','17:30','19:30','Tennis',''],['elia','1','17:30','18:30','Tennis',''],
+  ['aura','2','16:30','17:45','Ciències',''],['elia','2','16:30','17:45','Patinatge',''],
+  ['aura','3','16:30','17:45','Costura',''],['elia','3','16:30','17:45','Música',''],
+  ['aura','4','16:55','18:15','Música',''],['elia','5','17:15','18:15','Piscina','']],
+ /* dies d'escola especials: [des de, fins a, text, 'e', icona] */
+ esc:[],
+ /* horari de l'escola dl-dv */
+ escola:['9:00','16:30'],
+ /* despertar i anar a dormir (EXEMPLES: canvia'ls) [dl-dv, cap de setmana] */
+ son:{aura:{des:['7:30','8:30'],dorm:['21:00','21:30']},elia:{des:['7:30','8:30'],dorm:['20:30','21:00']}}
+};
+/* ============ CODI ============ */
+var DS=['Dl','Dt','Dc','Dj','Dv','Ds','Dg'],DL=['Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte','Diumenge'];
+var MN=['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre'];
+var MP=['de gener','de febrer','de març','d’abril','de maig','de juny','de juliol','d’agost','de setembre','d’octubre','de novembre','de desembre'];
+function $(i){return document.getElementById(i)}
+function p2(n){return n<10?'0'+n:''+n}
+function K(d){return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate())}
+function P(s){var a=s.split('-');return new Date(+a[0],a[1]-1,+a[2],12)}
+function AD(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n,12)}
+function W(d){return (d.getDay()+6)%7+1}
+function dd(a,b){return Math.round((b-a)/864e5)}
+function mn(s){var a=s.split(':');return +a[0]*60+ +a[1]}
+var S;try{S=JSON.parse(localStorage.getItem('dash1'))}catch(e){}
+if(!S||!S.d)S={d:{}};
+function sv(){try{localStorage.setItem('dash1',JSON.stringify(S))}catch(e){}}
+function TF(g,d){var w=W(d)+'';return C.tasques[g].filter(function(t){return !t[4]||t[4].indexOf(w)>-1})}
+function DN(g,d){var a=(S.d[K(d)]||{})[g]||[];return TF(g,d).filter(function(t){return a.indexOf(t[0])>-1}).length}
+function PC(g,d){var n=TF(g,d).length;return n?DN(g,d)/n:0}
+function tg(g,id){var k=K(new Date()),o=S.d[k]=S.d[k]||{},a=o[g]=o[g]||[],i=a.indexOf(id);if(i>-1)a.splice(i,1);else a.push(id);sv();VA();VS()}
+function streak(g){var d=new Date(),n=0;d=AD(d,0);if(PC(g,d)<1)d=AD(d,-1);while(n<400&&PC(g,d)>=1){n++;d=AD(d,-1)}return n}
+function wk0(){var t=new Date();return AD(t,-(W(t)-1))}
+function ws(g){var t=new Date(),m=wk0(),s=0;for(var i=0;i<W(t);i++)s+=DN(g,AD(m,i));return s}
+function age(n){var t=new Date(),b=P(n.nai),a=t.getFullYear()-b.getFullYear();if(t.getMonth()<b.getMonth()||(t.getMonth()==b.getMonth()&&t.getDate()<b.getDate()))a--;return a}
+function acts(g,w){return C.act.filter(function(a){return a[0]==g&&a[1].indexOf(w+'')>-1})}
+/* Dates senyalades */
+var EV={},EY={};
+function ad(k,t,c,i){(EV[k]=EV[k]||[]).push({t:t,c:c,i:i})}
+C.esc.forEach(function(r){for(var d=P(r[0]),e=P(r[1]);d<=e;d=AD(d,1))ad(K(d),r[2],'e',r[4]||'🏫')});
+function ens(y){if(EY[y])return;EY[y]=1;
+ [['01-01','Cap d’Any','f','🎆'],['01-05','Cavalcada de Reis','t','👑'],['01-06','Reis','f','🎁'],['01-17','Sant Antoni · Tres Tombs','t','🐴'],
+ ['02-12','Santa Eulàlia, patrona de Barcelona','t','🕊️'],['04-23','Sant Jordi','t','🌹'],['05-01','Festa del Treball','f','🛠️'],
+ ['06-23','Revetlla de Sant Joan','t','🔥'],['06-24','Sant Joan','f','🔥'],['08-15','L’Assumpció','f','📅'],['09-11','Diada de Catalunya','f','🚩'],
+ ['09-24','La Mercè (festa local de Barcelona)','f','🎉'],['10-12','Festa Nacional d’Espanya','f','📅'],['10-31','Castanyada i Halloween','t','🌰'],
+ ['11-01','Tots Sants','f','🕯️'],['12-06','Dia de la Constitució','f','📜'],['12-08','La Immaculada · comença el Caga Tió','f','🎄'],
+ ['12-24','Nit de Nadal','t','🎄'],['12-25','Nadal','f','⭐'],['12-26','Sant Esteve','f','🍽️'],['12-31','Nit de Cap d’Any · les dotze campanades','t','🍇']
+ ].forEach(function(e){ad(y+'-'+e[0],e[1],e[2],e[3])});
+ var a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,
+ i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1,E=new Date(y,mo-1,da,12);
+ [[-52,'Dijous Gras','t','🍳'],[-50,'Carnestoltes','t','🎭'],[-7,'Diumenge de Rams','t','🌿'],[-2,'Divendres Sant','f','✝️'],[0,'Pasqua','t','🐣'],
+ [1,'Dilluns de Pasqua · la mona','f','🐣'],[50,'Dilluns de Pasqua Granada (festa local de Barcelona)','f','📅']].forEach(function(x){var q=AD(E,x[0]);ad(K(q),x[1],x[2],x[3])});
+ C.nenes.forEach(function(n){var by=P(n.nai).getFullYear();if(y>by)ad(y+n.nai.slice(4),'Aniversari d’'+n.nom+' ('+(y-by)+' anys)','b','🎂')})}
+function evOn(d){ens(d.getFullYear());return EV[K(d)]||[]}
+/* Capçalera */
+var LK='';
+function H(){var d=new Date(),h=d.getHours();$('clock').innerHTML=p2(h)+':'+p2(d.getMinutes());
+ var gr=h<12?'Bon dia':h<20?'Bona tarda':'Bona nit';
+ $('dt').innerHTML='<b>'+gr+', Aura i Èlia!</b><span>'+DL[W(d)-1].toLowerCase()+', '+d.getDate()+' '+MP[d.getMonth()]+' de '+d.getFullYear()+'</span>';
+ var t=AD(d,0),o='';for(var i=0;i<400&&!o;i++){var q=AD(t,i),es=evOn(q).filter(function(e){return e.c!='e'});
+  if(es.length){var s=es[0];o=s.i+' '+s.t+'<br><small>'+(i==0?'avui':i==1?'demà':'d’aquí '+i+' dies')+'</small>'}}
+ $('nx').innerHTML=o}
+/* Avui */
+function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<W(t);i++){var d=AD(m,i);C.nenes.forEach(function(n){a+=DN(n.id,d);b+=TF(n.id,d).length})}
+ var p=b?Math.round(a*100/b):0,ok=p>=C.goal;
+ return '<div class="goal"><b>🏆 Objectiu de les dues: arribar al '+C.goal+'% de la setmana</b> — ara '+p+'% '+(ok?'🎉 '+C.premi+'!':'')+'<div class="bar"><span style="width:'+Math.min(p,100)+'%;background:'+(ok?'#1FA37A':'#FFC93C')+'"></span></div></div>'}
+function sn(g,d){var s=C.son[g],i=W(d)<6?0:1;return [s.des[i],s.dorm[i]]}
+function info(g,d){var w=W(d),m=d.getHours()*60+d.getMinutes(),s=sn(g,d),o='<div class="s">⏰ '+s[0]+' · 🌙 '+s[1]+'</div>';
+ if(w<6){var b=C.horari[g].filter(function(x){return m>=mn(x[0])&&m<mn(x[1])})[0];o+='<div class="s'+(b?' on':'')+'">🏫 '+(b?b[0]+'–'+b[1]+' '+b[2]:C.escola[0]+'–'+C.escola[1])+'</div>'}
+ acts(g,w).forEach(function(a){o+='<div class="s ac">'+a[2]+'–'+a[3]+' '+a[4]+(a[5]?' · '+a[5]:'')+'</div>'});
+ return o}
+function VA(){var d=new Date(),h=d.getHours(),fn=h<12?0:h<16?1:h<20?2:3,o='<div class="cols">';
+ C.nenes.forEach(function(n){var g=n.id,ts=TF(g,d),dn=DN(g,d),pc=ts.length?Math.round(dn*100/ts.length):0,dn2=(S.d[K(d)]||{})[g]||[];
+  o+='<div class="col" style="border-color:'+n.col+'"><div class="hd"><b>'+n.nom+'</b><small>'+age(n)+' anys</small><span class="ch">🔥 '+streak(g)+' · ⭐ '+ws(g)+'</span></div><div class="bar"><span style="width:'+pc+'%;background:'+n.col+'"></span></div>';
+  o+='<div class="tg">';C.franges.forEach(function(f,i){var l=ts.filter(function(t){return t[3]==i});if(!l.length)return;
+   o+='<div class="fg"><div class="fr'+(i==fn?' now':'')+'">'+f[1]+' '+f[0]+'</div>';
+   l.forEach(function(t){var x=dn2.indexOf(t[0])>-1;o+='<div class="t'+(x?' d':'')+'" onclick="tg(\''+g+'\',\''+t[0]+'\')"><i>'+t[2]+'</i>'+t[1]+'<span class="k">'+(x?'⭐':'☆')+'</span></div>'});o+='</div>'});
+  o+='</div>'+info(g,d)+'</div>'});
+ $('v0').innerHTML=o+'</div>'+goal()}
+/* Setmana */
+function VS(){var t=new Date(),m=wk0(),o='<div class="cols">';
+ C.nenes.forEach(function(n){var g=n.id;o+='<div class="col" style="border-color:'+n.col+'"><div class="hd"><b>'+n.nom+'</b><small>progrés de la setmana</small></div><div class="wk">';
+  for(var i=0;i<7;i++){var d=AD(m,i),fut=K(d)>K(t);o+='<div class="wd'+(K(d)==K(t)?' tdy':'')+'"><div class="wb"><span style="height:'+Math.round(PC(g,d)*100)+'%;background:'+n.col+'"></span></div><b>'+DS[i]+'</b><small>'+(fut?'–':DN(g,d)+'/'+TF(g,d).length)+'</small></div>'}
+  o+='</div></div>'});
+ $('v1').innerHTML=o+'</div>'}
+/* Horaris */
+var A0=390,A1=1320;
+function pc(m){return Math.max(0,Math.min(100,(m-A0)*100/(A1-A0)))}
+function bl(a,b,cl,tx,st){var l=pc(a);return '<div class="bl '+cl+'" style="left:'+l+'%;width:'+(pc(b)-l)+'%;'+(st||'')+'">'+(tx||'')+'</div>'}
+function VH(){var t=new Date(),nm=t.getHours()*60+t.getMinutes(),ax='<div class="ax">',h,r='';
+ for(h=7;h<=21;h+=2)ax+='<span style="left:'+pc(h*60)+'%">'+h+'</span>';ax+='</div>';
+ C.nenes.forEach(function(n){var g=n.id,s=C.son[g];
+  r+='<div class="col" style="border-color:'+n.col+';margin:4px 6px 8px;padding:8px 12px"><div class="hd" style="font-size:22px;margin:0"><b>'+n.nom+'</b><small>⏰ '+s.des[0]+' (cap de setmana '+s.des[1]+') · 🌙 '+s.dorm[0]+' ('+s.dorm[1]+')</small></div>'+ax;
+  for(var i=1;i<=7;i++){var k=i<6?0:1,w=mn(s.des[k]),b=mn(s.dorm[k]);
+   r+='<div class="rw"><b'+(W(t)==i?' style="color:#E5484D"':'')+'>'+DS[i-1]+'</b><div class="tk">'+bl(A0,w,'sl','⏰')+bl(b,A1,'sl','🌙');
+   if(i<6)r+=bl(mn(C.escola[0]),mn(C.escola[1]),'sc','🏫 Escola '+C.escola[0]+'–'+C.escola[1]);
+   acts(g,i).forEach(function(a){r+=bl(mn(a[2]),mn(a[3]),'',a[4],'background:'+n.col)});
+   if(W(t)==i)r+='<div class="nw" style="left:'+pc(nm)+'%"></div>';
+   r+='</div></div>'}
+  r+='<div class="s">'+C.act.filter(function(a){return a[0]==g}).map(function(a){return a[1].split('').map(function(x){return DS[x-1]}).join('/')+' '+a[4]+' '+a[2]+'–'+a[3]}).join(' · ')+'</div></div>'});
+ $('v2').innerHTML=r}
+/* Calendari */
+var CM=new Date();CM=new Date(CM.getFullYear(),CM.getMonth(),1,12);
+function mv(n){CM=new Date(CM.getFullYear(),CM.getMonth()+n,1,12);VC()}
+function VC(){var y=CM.getFullYear(),mo=CM.getMonth();ens(y);var nd=new Date(y,mo+1,0).getDate(),tk=K(new Date()),lst='',
+ o='<div class="cols"><div class="col" style="flex:1.6;border-color:#1E2A44"><div class="hd"><span class="nv" onclick="mv(-1)">◀</span><b>'+MN[mo]+' '+y+'</b><span class="nv" onclick="mv(1)">▶</span></div><table><tr>'+DS.map(function(x){return '<th>'+x+'</th>'}).join('')+'</tr><tr>';
+ for(var i=1;i<W(CM);i++)o+='<td></td>';
+ for(var day=1;day<=nd;day++){var dt=new Date(y,mo,day,12),k=K(dt),es=EV[k]||[],w=W(dt);if(w==1&&day>1)o+='</tr><tr>';
+  o+='<td class="'+(k==tk?'td':'')+'"><b>'+day+'</b><div>'+es.slice(0,3).map(function(e){return '<span class="e'+e.c+'">'+e.i+'</span>'}).join('')+'</div></td>';
+  es.forEach(function(e){lst+='<div class="ev"><b>'+day+'</b> '+e.i+' '+e.t+'</div>'})}
+ o+='</tr></table></div><div class="col" style="border-color:#FFC93C"><div class="hd"><b>Aquest mes</b></div>'+(lst||'<div class="ev">Cap data senyalada</div>')+
+  '</div></div>';
+ $('v3').innerHTML=o}
+/* Pares */
+var UN=0;
+function VP(){var o='<div class="col" style="border-color:#1E2A44;margin:0">';
+ if(!UN)o+='<div class="hd"><b>🔒 Zona de pares</b></div><input id="pin" type="password" maxlength="8" placeholder="Codi"><button onclick="pn()">Entrar</button>';
+ else o+='<div class="hd"><b>🔓 Zona de pares</b></div><button onclick="rs(0)">Esborrar avui</button><button onclick="rs(1)">Esborrar la setmana</button><button onclick="UN=0;VP()">Tancar</button>'+
+  '<div class="fr">Còpia de seguretat</div><button onclick="bk()">Generar còpia</button><button onclick="rb()">Restaurar còpia</button><br><textarea id="bk" rows="5" style="width:96%"></textarea>'+
+  '<div class="fr">Premi de la setmana: '+C.premi+'. Per canviar tasques, horari, extraescolars o el codi, edita la zona CONFIGURACIÓ del fitxer index.html.</div>';
+ $('v4').innerHTML=o+'</div>'}
+function pn(){if($('pin').value==C.pin){UN=1;VP()}else alert('Codi incorrecte')}
+function rs(w){var t=new Date();if(!confirm('Segur?'))return;for(var i=0;i<(w?7:1);i++){delete S.d[K(w?AD(wk0(),i):t)]}sv();VA();VS()}
+function bk(){$('bk').value=JSON.stringify(S)}
+function rb(){try{var x=JSON.parse($('bk').value);if(x&&x.d){S=x;sv();VA();VS();alert('Còpia restaurada')}}catch(e){alert('Còpia no vàlida')}}
+/* Pestanyes i rellotge */
+var CT=0;
+function tab(i){CT=i;for(var j=0;j<5;j++){$('v'+j).className='v'+(j==i?' on':'');$('n'+j).className=j==i?'on':''}
+ if(i==0)VA();if(i==1)VS();if(i==2)VH();if(i==3){CM=new Date();CM=new Date(CM.getFullYear(),CM.getMonth(),1,12);VC()}if(i==4)VP()}
+H();VA();VS();LK=K(new Date());
+setInterval(function(){H();var k=K(new Date());if(k!=LK){LK=k;tab(CT)}else if(CT==0)VA();else if(CT==2)VH()},20000);
+</script></body></html>
