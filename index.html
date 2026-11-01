@@ -9,8 +9,8 @@ body{margin:0;background:#fff;color:#35433F;font-family:"Open Sans","Helvetica N
 #top{display:flex;align-items:center;padding:3px 22px;background:#819D96;color:#fff}
 #clock{font-size:46px;font-weight:300;width:140px}
 #dt{flex:1}#dt b{font-size:26px;display:block;font-weight:600}#dt span{font-size:18px}
-#nx{background:#D0BD85;color:#35433F;border-radius:14px;padding:8px 14px;font-weight:600;font-size:18px;max-width:310px}
-#lk{font-size:30px;margin-left:16px;cursor:pointer}
+#nx{display:flex}.nb{background:#D0BD85;color:#35433F;border-radius:14px;padding:6px 14px;font-weight:600;font-size:17px;max-width:300px;margin-left:8px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.nb.two{font-size:15px;max-width:215px;padding:6px 10px}
+#sy{font-size:20px;margin-left:12px}#lk{font-size:30px;margin-left:16px;cursor:pointer}
 nav{display:flex;background:#819D96;border-bottom:3px solid #F3F6F7}
 nav div{flex:1;text-align:center;padding:9px;font-size:20px;font-weight:600;cursor:pointer;color:#fff}
 nav .on{background:#D0BD85;color:#35433F}
@@ -27,7 +27,7 @@ nav .on{background:#D0BD85;color:#35433F}
 .t i{font-style:normal;font-size:16px;line-height:1;width:22px;flex:none}.t .k{margin-left:4px;font-size:14px;line-height:1;flex:none}.t .tx{flex:1;min-width:0;line-height:1.15}.tx small{display:block;font-size:11px;opacity:.85}
 .t.d{background:#B7BC9F}.t.up .tx{text-transform:uppercase}
 .s{font-size:16px;padding:3px 10px;border-radius:8px}.s.on{background:#D0BD85;font-weight:600}.s.ac{background:#D6BCAB}
-.bot{display:flex;margin-top:4px}.goal{flex:0 0 40%;margin:0 4px 0 6px;background:#F3F6F7;border-radius:18px;padding:5px 14px;font-size:14px;line-height:1.25}.goal .bar{margin-top:3px;height:14px}
+.goal{display:flex;align-items:center;margin:4px 6px 0;background:#F3F6F7;border-radius:18px;padding:4px 14px;font-size:14px;line-height:1.25}.goal .gt{white-space:nowrap}.goal .bar{flex:1;margin:0 0 0 14px;height:14px}
 .wk{display:flex;margin:8px 0}.wd{flex:1;text-align:center;font-size:15px}
 .wb{height:105px;background:#D6BCAB;border-radius:8px;margin:0 4px 4px;position:relative}
 .wb span{position:absolute;bottom:0;left:0;right:0;border-radius:8px}.wd small{display:block;opacity:.75}.tdy b{color:#C87968}
@@ -60,16 +60,18 @@ button{background:#D0BD85;font-weight:600}
 #rot{display:none}@media (orientation:portrait){#rot{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background:#819D96;color:#fff;z-index:9;text-align:center;font-size:30px;padding-top:40%}}
 .ow{display:flex}.ow div{flex:1;text-align:center}.ow small{display:block;font-size:12px}.ow svg{display:block;margin:0 auto}.ow .off svg{opacity:.2;-webkit-filter:grayscale(1)}
 .oc{display:flex;justify-content:space-around;align-items:center;margin-top:8px;font-size:15px;font-weight:600}.oc span{display:flex;align-items:center}
-.wxb{flex:1;display:flex;align-items:center;flex-wrap:wrap;margin:0 6px 0 0;background:#F3F6F7;border-radius:18px;padding:5px 14px;font-size:14px;line-height:1.25}.wxb .wi{font-size:20px;margin-right:8px}.wxb b{margin-right:8px}.wxb .wr{flex-basis:100%;font-weight:600}
+.wxb{display:flex;align-items:center;flex-wrap:wrap;margin:4px 6px 0;background:#F3F6F7;border-radius:18px;padding:4px 14px;font-size:14px;line-height:1.25}.wxb .wi{font-size:20px;margin-right:8px}.wxb b{margin-right:8px}.wxb .wr{margin-left:10px;font-weight:600}
 </style></head><body>
-<div id="top"><div id="clock"></div><div id="dt"></div><div id="nx"></div><div id="lk" onclick="tab(4)">🔒</div></div>
+<div id="top"><div id="clock"></div><div id="dt"></div><div id="nx"></div><span id="sy"></span><div id="lk" onclick="tab(4)">🔒</div></div>
 <div id="rot">🔄 Gira l’iPad en horitzontal</div>
-<nav><div id="n0" class="on" onclick="tab(0)">☀️ Avui</div><div id="n1" onclick="tab(1)">📋 Setmana</div><div id="n2" onclick="tab(2)">⏰ Horaris</div><div id="n3" onclick="tab(3)">🌈 Calendari</div></nav>
+<nav><div id="n0" class="on" onclick="tab(0)">☀️ Avui</div><div id="n1" onclick="tab(1)">📋 Setmana</div><div id="n2" onclick="tab(2)">⏰ Horaris</div><div id="n3" onclick="tab(3)"><svg width="22" height="22" viewBox="0 0 24 24" style="vertical-align:-4px"><rect x="2.5" y="4.5" width="19" height="17" rx="3" fill="#fff" stroke="#35433F" stroke-width="1.3"/><path d="M2.5 8a3.5 3.5 0 0 1 3.5-3.5h12A3.5 3.5 0 0 1 21.5 8v3h-19z" fill="#C87968"/><rect x="7" y="1.5" width="2.2" height="5" rx="1.1" fill="#35433F"/><rect x="14.8" y="1.5" width="2.2" height="5" rx="1.1" fill="#35433F"/><g fill="#819D96"><circle cx="8" cy="15" r="1.3"/><circle cx="12" cy="15" r="1.3"/><circle cx="16" cy="15" r="1.3"/><circle cx="8" cy="18.5" r="1.3"/><circle cx="12" cy="18.5" r="1.3"/></g><circle cx="16" cy="18.5" r="1.3" fill="#C87968"/></svg> Calendari</div></nav>
 <div id="v0" class="v on"></div><div id="v1" class="v"></div><div id="v2" class="v"></div><div id="v3" class="v"></div><div id="v4" class="v"></div>
 <div id="toast"></div>
 <script>
 /* ============ CONFIGURACIÓ (edita aquí) ============ */
 var C={
+ /* Sincronització entre dispositius (Firebase). Deixa url buit per desactivar-la. */
+ sync:{url:'',clau:''},
  pin:'1234', goal:80, premi:'Plan familiar el cap de setmana',
  nenes:[{id:'aura',nom:'Aura',nai:'2017-12-23',col:'#C87968',tc:'#fff'},{id:'elia',nom:'Èlia',nai:'2021-03-20',col:'#B7BC9F',tc:'#35433F',maj:1}],
  franges:[['MATÍ'],['MIGDIA'],['TARDA'],['NIT']],
@@ -96,7 +98,7 @@ var C={
   ['aura','3','16:30','17:45','Costura',''],['elia','3','16:30','17:45','Música',''],
   ['aura','4','16:55','18:15','Música',''],['elia','5','17:15','18:15','Piscina','']],
  /* dies especials: [des de, fins a, text, tipus ('e' escola, 'u' esdeveniment puntual), icona, descripció, hora inici, hora fi (les dues últimes opcionals: sense hora = tot el dia)] */
- esc:[['2026-11-08','2026-11-08','Escalada (Daniel i Martí)','u','⛰️']],
+ esc:[['2026-11-02','2026-11-02','Dentista d’Aura · 15:30','u','🏥'],['2026-11-08','2026-11-08','Escalada (Daniel i Martí)','u','⛰️']],
  /* horari de l'escola dl-dv */
  escola:['9:00','16:30'],
  /* despertar i anar a dormir [dl-dv, cap de setmana]; null = lliure */
@@ -118,7 +120,7 @@ function W(d){return (d.getDay()+6)%7+1}
 function dd(a,b){return Math.round((b-a)/864e5)}
 function mn(s){var a=s.split(':');return +a[0]*60+ +a[1]}
 var S;try{S=JSON.parse(localStorage.getItem('dash1'))}catch(e){}
-if(!S||!S.d)S={d:{}};
+if(!S||!S.d)S={d:{}};if(!S.t)S.t={};if(!S.q)S.q={};
 function sv(){try{localStorage.setItem('dash1',JSON.stringify(S))}catch(e){}}
 function TF(g,d){var w=W(d)+'';return C.tasques[g].filter(function(t){var k=t[4],ok=!k||(k=='E'?(W(d)<6&&!isF(d)):k.indexOf(w)>-1);return ok&&(t[3]!=1||isF(d))})}
 function isF(d){return evOn(d).some(function(e){return e.c=='f'})}
@@ -126,7 +128,7 @@ function DN(g,d){var a=(S.d[K(d)]||{})[g]||[];return TF(g,d).filter(function(t){
 function PC(g,d){var n=TF(g,d).length;return n?DN(g,d)/n:0}
 function ML(p){return p>=1?3:p>=.75?2:p>=.5?1:0}
 var MD=['','🥉','🥈','🥇'],TO,AC;
-function tg(g,id){var d=new Date(),b=ML(PC(g,d)),k=K(d),o=S.d[k]=S.d[k]||{},a=o[g]=o[g]||[],i=a.indexOf(id);if(i>-1)a.splice(i,1);else a.push(id);sv();var l=ML(PC(g,d));VA();VS();if(l>b)cele(g,l)}
+function tg(g,id){var d=new Date(),b=ML(PC(g,d)),k=K(d);flip(k,g,id);var l=ML(PC(g,d));VA();VS();if(l>b)cele(g,l)}
 function toast(t){var e=$('toast');e.innerHTML=t;e.style.display='block';clearTimeout(TO);TO=setTimeout(function(){e.style.display='none'},3800)}
 function owl(l,z){var c=['','#B87A4B','#B9C2C9','#E3B93C'][l],m=l?'<polygon points="36,64 45,64 56,84 47,84" fill="#C87968"/><polygon points="64,64 55,64 44,84 53,84" fill="#C87968"/><circle cx="50" cy="90" r="13" fill="'+c+'" stroke="#35433F" stroke-width="2"/><circle cx="50" cy="90" r="8" fill="none" stroke="#fff" stroke-width="2" opacity=".7"/>':'';return '<svg width="'+z+'" height="'+Math.round(z*1.1)+'" viewBox="0 0 100 110"><polygon points="20,34 28,8 46,28" fill="#B7BC9F"/><polygon points="80,34 72,8 54,28" fill="#B7BC9F"/><ellipse cx="50" cy="62" rx="36" ry="40" fill="#B7BC9F"/><ellipse cx="14" cy="68" rx="9" ry="22" fill="#819D96"/><ellipse cx="86" cy="68" rx="9" ry="22" fill="#819D96"/><ellipse cx="50" cy="80" rx="22" ry="22" fill="#F3F6F7"/><circle cx="35" cy="44" r="14" fill="#fff"/><circle cx="65" cy="44" r="14" fill="#fff"/><circle cx="37" cy="45" r="7" fill="#35433F"/><circle cx="63" cy="45" r="7" fill="#35433F"/><circle cx="39" cy="42" r="2.5" fill="#fff"/><circle cx="65" cy="42" r="2.5" fill="#fff"/><polygon points="43,54 57,54 50,66" fill="#D0BD85"/><ellipse cx="40" cy="104" rx="9" ry="4" fill="#D0BD85"/><ellipse cx="60" cy="104" rx="9" ry="4" fill="#D0BD85"/>'+m+'</svg>'}
 function OC(g){var c=[0,0,0,0];Object.keys(S.d).forEach(function(k){var l=ML(PC(g,P(k)));if(l)c[l]++});return c}
@@ -177,8 +179,9 @@ var LK='';
 function H(){var d=new Date(),h=d.getHours();$('clock').innerHTML=p2(h)+':'+p2(d.getMinutes());
  var gr=h<12?'Bon dia':h<20?'Bona tarda':'Bona nit';
  $('dt').innerHTML='<b>'+gr+', Aura i Èlia!</b><span>'+DL[W(d)-1].toLowerCase()+', '+d.getDate()+' '+MP[d.getMonth()]+' de '+d.getFullYear()+'</span>';
- var t=AD(d,0),o='';for(var i=0;i<400&&!o;i++){var q=AD(t,i),es=evOn(q).filter(function(e){return e.c!='e'});
-  if(es.length){var s=es[0];o=s.i+' '+s.t+'<br><small>'+(i==0?'avui':i==1?'demà':'d’aquí '+i+' dies')+'</small>'}}
+ var t=AD(d,0),o='',nf=function(e){return e.c!='e'},bx=function(s,w,c){return '<div class="nb'+(c||'')+'">'+s.i+' '+s.t+'<br><small>'+w+'</small></div>'},e0=evOn(t).filter(nf),e1=evOn(AD(t,1)).filter(nf);
+ if(e0.length&&e1.length)o=bx(e0[0],'avui',' two')+bx(e1[0],'demà',' two');
+ else for(var i=0;i<400&&!o;i++){var es=evOn(AD(t,i)).filter(nf);if(es.length)o=bx(es[0],i==0?'avui':i==1?'demà':'d’aquí '+i+' dies')}
  $('nx').innerHTML=o}
 /* Avui */
 function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<W(t);i++){var d=AD(m,i);C.nenes.forEach(function(n){a+=DN(n.id,d);b+=TF(n.id,d).length})}
@@ -261,27 +264,43 @@ function PE(){var t=new Date(),m=wk0(),o='<div class="fr">Retocar dies de la set
  C.nenes.forEach(function(n){var g=n.id,a=(S.d[PK]||{})[g]||[];o+='<div style="flex:1;margin:0 4px"><b>'+n.nom+' · '+DL[W(d)-1].toLowerCase()+' '+d.getDate()+'</b>';
   TF(g,d).forEach(function(q){var x=a.indexOf(q[0])>-1;o+='<div class="t'+(x?' d':'')+(n.maj?' up':'')+'" onclick="pt(\''+g+'\',\''+q[0]+'\')"><i>'+q[2]+'</i><span class="tx">'+q[1]+(q[5]?'<small>'+q[5]+'</small>':'')+'</span><span class="k">'+(x?'⭐':'☆')+'</span></div>'});
   o+='</div>'});return o+'</div>'}
-function pt(g,id){var o=S.d[PK]=S.d[PK]||{},a=o[g]=o[g]||[],i=a.indexOf(id);if(i>-1)a.splice(i,1);else a.push(id);sv();VP();VA();VS()}
+function pt(g,id){flip(PK,g,id);VP();VA();VS()}
 function pn(){if($('pin').value==C.pin){UN=1;VP()}else alert('Codi incorrecte')}
-function rs(w){var t=new Date();if(!confirm('Segur?'))return;for(var i=0;i<(w?7:1);i++){delete S.d[K(w?AD(wk0(),i):t)]}sv();VA();VS()}
+function rs(w){var t=new Date();if(!confirm('Segur?'))return;for(var i=0;i<(w?7:1);i++){var k=K(w?AD(wk0(),i):t),o=S.d[k]||{};for(var g in o)o[g].slice().forEach(function(id){flip(k,g,id)})}VA();VS()}
 function bk(){$('bk').value=JSON.stringify(S)}
-function rb(){try{var x=JSON.parse($('bk').value);if(x&&x.d){S=x;sv();VA();VS();alert('Còpia restaurada')}}catch(e){alert('Còpia no vàlida')}}
+function rb(){try{var x=JSON.parse($('bk').value);if(x&&x.d){S=x;if(!S.t)S.t={};if(!S.q)S.q={};restamp();sv();VA();VS();alert('Còpia restaurada')}}catch(e){alert('Còpia no vàlida')}}
 /* Previsió del temps (Open-Meteo, Barcelona) */
 var FC=null;
 function wxi(c,d){return c==0?(d?'☀️':'🌙'):c<3?(d?'🌤️':'☁️'):c==3?'☁️':c<50?'🌫️':c<60?'🌦️':c<70?'🌧️':c<80?'🌨️':c<83?'🌧️':c<87?'🌨️':'⛈️'}
 function wdesc(c){return c==0?'cel clar':c<3?'poc ennuvolat':c==3?'cel tapat':c<50?'boira':c<60?'plugim':c<70?'pluja':c<80?'neu':c<83?'ruixats':c<87?'nevades':'tempestes'}
-function ropa(f){var x=f.mx,r=x<10?'abric gruixut, gorro i bufanda':x<15?'abric i jersei':x<19?'jaqueta i roba de màniga llarga':x<24?'roba de màniga llarga fina i una jaqueta lleugera pel matí':x<29?'roba de màniga curta':'roba fresca de màniga curta i gorra',t='Roba: '+r+'.';
+function ropa(f){var x=f.mx,r=x<10?'abric gruixut, gorro i bufanda':x<15?'abric i jersei':x<19?'jaqueta i roba de màniga llarga':x<24?'roba de màniga llarga fina i una jaqueta lleugera pel matí':x<29?'roba de màniga curta':'roba fresca de màniga curta i gorra',t=r.charAt(0).toUpperCase()+r.slice(1)+'.';
  if(f.p>=40||(f.c>=51&&f.c<=67)||(f.c>=80&&f.c<=82)||f.c>=95)t+=' ☂️ Agafa el paraigua!';
  if((f.c>=71&&f.c<=77)||(f.c>=85&&f.c<=86))t+=' Botes i guants per la neu.';
  return t}
-function WXB(){if(!FC)return '';return '<div class="wxb"><span class="wi">'+wxi(FC.c,1)+'</span><b>Previsió d’avui</b>'+Math.round(FC.mi)+'°–'+Math.round(FC.mx)+'° · '+wdesc(FC.c)+' · prob. de pluja '+FC.p+'%<span class="wr">'+ropa(FC)+'</span></div>'}
-function GW(){try{var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=2.17&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=1',true);
- x.onload=function(){try{var d=JSON.parse(x.responseText).daily;FC={c:d.weathercode[0],mx:d.temperature_2m_max[0],mi:d.temperature_2m_min[0],p:d.precipitation_probability_max[0]||0};if(CT==0)VA()}catch(e){}};x.send()}catch(e){}}
+function WXB(){if(!FC)return '';return '<div class="wxb"><span class="wi">'+wxi(FC.c,1)+'</span><b>Previsió de demà</b>'+Math.round(FC.mi)+'°–'+Math.round(FC.mx)+'° · '+wdesc(FC.c)+' · prob. de pluja '+FC.p+'%<span class="wr">'+ropa(FC)+'</span></div>'}
+function GW(){try{var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=2.17&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=2',true);
+ x.onload=function(){try{var d=JSON.parse(x.responseText).daily;FC={c:d.weathercode[1],mx:d.temperature_2m_max[1],mi:d.temperature_2m_min[1],p:d.precipitation_probability_max[1]||0};if(CT==0)VA()}catch(e){}};x.send()}catch(e){}}
 GW();setInterval(GW,1800000);
+/* Sincronització (Firebase Realtime Database, API REST) */
+function flip(k,g,id){var o=S.d[k]=S.d[k]||{},a=o[g]=o[g]||[],i=a.indexOf(id),n=Date.now(),p=k+'/'+g+'/'+id,v;if(i>-1){a.splice(i,1);v=-n}else{a.push(id);v=n}S.t[p]=v;S.q[p]=v;sv();push()}
+function SYon(){return C.sync&&C.sync.url&&C.sync.clau}
+function SYu(){return C.sync.url.replace(/\/$/,'')+'/'+C.sync.clau+'/d.json'}
+function st(x){var e=$('sy');if(e)e.innerHTML=SYon()?(x=='ok'?'☁️':'⚠️'):''}
+function xhr(m,u,b,ok,er){try{var x=new XMLHttpRequest();x.open(m,u,true);x.onload=function(){if(x.status>=200&&x.status<300)ok(x.responseText);else er()};x.onerror=er;if(b)x.setRequestHeader('Content-Type','text/plain');x.send(b||null)}catch(e){er()}}
+function push(){if(!SYon())return;var sn={},n=0,k;for(k in S.q){sn[k]=S.q[k];n++}if(!n)return;
+ xhr('PATCH',SYu(),JSON.stringify(sn),function(){for(var k in sn)if(S.q[k]===sn[k])delete S.q[k];sv();st('ok')},function(){st('err')})}
+function ap(k,v){var a=k.split('/'),o=S.d[a[0]]=S.d[a[0]]||{},l=o[a[1]]=o[a[1]]||[],i=l.indexOf(a[2]);if(v>0&&i<0)l.push(a[2]);if(v<0&&i>-1)l.splice(i,1);S.t[k]=v}
+function SY(full){if(!SYon())return;push();var q=full?'':'?orderBy=%22%24key%22&startAt=%22'+K(AD(new Date(),-14))+'%22';
+ xhr('GET',SYu()+q,null,function(tx){var r;try{r=JSON.parse(tx)||{}}catch(e){r={}}var ch=0,d,g,id,k,v;
+  for(d in r)for(g in r[d])for(id in r[d][g]){k=d+'/'+g+'/'+id;v=r[d][g][id];if(Math.abs(v)>Math.abs(S.t[k]||0)){ap(k,v);ch=1}}
+  if(ch){sv();if(CT<4)tab(CT)}st('ok')},function(){st('err')})}
+function restamp(){var d,g,n=Date.now();for(d in S.d)for(g in S.d[d])S.d[d][g].forEach(function(id){var k=d+'/'+g+'/'+id;S.t[k]=n;S.q[k]=n});push()}
+function SYinit(){if(!SYon()){st('');return}var d,g;for(d in S.d)for(g in S.d[d])S.d[d][g].forEach(function(id){var k=d+'/'+g+'/'+id;if(!(k in S.t)){S.t[k]=1;S.q[k]=1}});sv();SY(1);setInterval(function(){SY(0)},30000)}
 /* Pestanyes i rellotge */
 var CT=0;
 function tab(i){CT=i;for(var j=0;j<5;j++){$('v'+j).className='v'+(j==i?' on':'');if($('n'+j))$('n'+j).className=j==i?'on':''}UN=i==4?UN:0;
  if(i==0)VA();if(i==1)VS();if(i==2)VH();if(i==3){CM=new Date();CM=new Date(CM.getFullYear(),CM.getMonth(),1,12);VC()}if(i==4)VP()}
 H();VA();VS();LK=K(new Date());
 setInterval(function(){H();var k=K(new Date());if(k!=LK){LK=k;tab(CT)}else if(CT==0)VA();else if(CT==2)VH()},20000);
+SYinit();
 </script></body></html>
