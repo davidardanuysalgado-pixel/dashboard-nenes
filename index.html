@@ -8,27 +8,26 @@
 body{margin:0;background:#fff;color:#35433F;font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 #top{display:flex;align-items:center;padding:3px 22px;background:#819D96;color:#fff}
 #clock{font-size:46px;font-weight:300;width:140px}
-#wx{font-size:34px;margin-right:18px;white-space:nowrap}#wx b{font-size:34px}
 #dt{flex:1}#dt b{font-size:26px;display:block;font-weight:600}#dt span{font-size:18px}
 #nx{background:#D0BD85;color:#35433F;border-radius:14px;padding:8px 14px;font-weight:600;font-size:18px;max-width:310px}
 #lk{font-size:30px;margin-left:16px;cursor:pointer}
 nav{display:flex;background:#819D96;border-bottom:3px solid #F3F6F7}
 nav div{flex:1;text-align:center;padding:9px;font-size:20px;font-weight:600;cursor:pointer;color:#fff}
 nav .on{background:#D0BD85;color:#35433F}
-.v{display:none;padding:8px 12px}.v.on{display:block}
+.v{display:none;padding:6px 10px}.v.on{display:block}
 .cols{display:flex}
 .col{flex:1;margin:0 6px;background:#F3F6F7;border-radius:18px;padding:12px;border-top:10px solid #fff;border-color:#fff!important}
-.hd{font-size:26px;display:flex;align-items:center;margin-bottom:8px;height:40px}.hd small{font-size:16px;margin-left:8px;opacity:.75}
-.hd.av{height:46px}.md svg{vertical-align:middle}.md{display:inline-block;margin-left:auto;width:54px;height:50px;line-height:50px;text-align:center;overflow:hidden;font-size:28px;margin-right:8px}.ch{margin-left:8px;font-size:20px;font-weight:600}
+.hd{font-size:24px;display:flex;align-items:center;margin-bottom:8px;height:40px}.hd small{font-size:16px;margin-left:8px;opacity:.75}
+.hd.av{height:40px}.md svg{vertical-align:middle}.md{display:inline-block;margin-left:auto;width:54px;height:50px;line-height:50px;text-align:center;overflow:hidden;font-size:28px;margin-right:8px}.ch{margin-left:8px;font-size:20px;font-weight:600}
 .bar{height:20px;background:#D6BCAB;border-radius:8px;overflow:hidden;position:relative}.bar span{display:block;height:100%}
 .bar u{position:absolute;top:0;bottom:0;width:2px;background:#fff}
 .mk{position:absolute;top:0;line-height:20px;font-size:12px;font-weight:600;font-style:normal;white-space:nowrap;padding-right:5px;color:#35433F}
 .fr{font-weight:600;font-size:17px;margin-top:10px;color:#6B8780}.fr.now{color:#C87968}
-.t{display:flex;align-items:center;padding:2px 8px;margin:2px 0;line-height:1.2;border-radius:12px;background:#F3F6F7;border:1px solid #F3F6F7;font-size:14px;font-weight:400;cursor:pointer}
-.t i{font-style:normal;font-size:18px;line-height:1;width:24px;flex:none}.t .k{margin-left:6px;font-size:16px;line-height:1;flex:none}.t .tx{flex:1;min-width:0;line-height:1.15}.tx small{display:block;font-size:11px;opacity:.85}
+.t{display:flex;align-items:center;padding:2px 6px;margin:2px 0;line-height:1.2;border-radius:12px;background:#F3F6F7;border:1px solid #F3F6F7;font-size:13px;font-weight:400;cursor:pointer}
+.t i{font-style:normal;font-size:16px;line-height:1;width:22px;flex:none}.t .k{margin-left:4px;font-size:14px;line-height:1;flex:none}.t .tx{flex:1;min-width:0;line-height:1.15}.tx small{display:block;font-size:11px;opacity:.85}
 .t.d{background:#B7BC9F}.t.up .tx{text-transform:uppercase}
 .s{font-size:16px;padding:3px 10px;border-radius:8px}.s.on{background:#D0BD85;font-weight:600}.s.ac{background:#D6BCAB}
-.goal{display:flex;align-items:center;white-space:nowrap;margin:6px 6px 0;background:#F3F6F7;border-radius:18px;padding:6px 14px;font-size:15px}.goal b{margin-right:6px}.goal .bar{flex:1;margin:0 0 0 14px;min-width:120px}
+.bot{display:flex;margin-top:4px}.goal{flex:0 0 40%;margin:0 4px 0 6px;background:#F3F6F7;border-radius:18px;padding:5px 14px;font-size:14px;line-height:1.25}.goal .bar{margin-top:3px;height:14px}
 .wk{display:flex;margin:8px 0}.wd{flex:1;text-align:center;font-size:15px}
 .wb{height:105px;background:#D6BCAB;border-radius:8px;margin:0 4px 4px;position:relative}
 .wb span{position:absolute;bottom:0;left:0;right:0;border-radius:8px}.wd small{display:block;opacity:.75}.tdy b{color:#C87968}
@@ -46,7 +45,7 @@ td.td{background-color:#fff;background-image:none;color:#35433F;border:2px solid
 button,input,textarea{font-family:inherit;font-size:18px;padding:8px 12px;margin:4px 2px;border-radius:10px;border:2px solid #819D96;background:#fff;color:#35433F}
 button{background:#D0BD85;font-weight:600}
 .tg{margin-top:6px}
-.fg{display:flex;align-items:flex-start;margin:2px 0}.fg .fr{width:64px;flex:none;margin:0;padding-top:6px;font-size:13px}.ft{flex:1;display:flex;flex-wrap:wrap;min-width:0}.ft .t{width:48%;margin:2px 1%;box-sizing:border-box}.if{flex:1;margin:0 8px;min-width:0;line-height:1.1}.if .s{display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;font-size:12px}
+.fg{display:block;margin:2px 0}.fg .fr{margin:5px 0 1px 4px;padding:0;font-size:12px;line-height:14px;letter-spacing:.5px}.ft{flex:1;display:flex;flex-wrap:wrap;min-width:0}.ft .t{width:48%;margin:2px 1%;box-sizing:border-box}.if{flex:1;margin:0 8px;min-width:0;line-height:1.1}.if .s{display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;font-size:12px}
 .fq{display:flex;align-items:center;margin:5px 0;font-size:16px}.fq b{width:92px}.fq em{width:52px;text-align:right;font-style:normal;font-weight:600}
 .fq span{flex:1;margin:0 3px;text-align:center;border-radius:8px;padding:6px 0;font-size:14px;font-weight:600}
 .fq .dh{padding:0;background:none;font-size:13px;font-weight:400}.cf{background:#B7BC9F}.cp{background:#D0BD85}.cz{background:#D6BCAB}.cg{background:#E9EEEF}
@@ -61,8 +60,9 @@ button{background:#D0BD85;font-weight:600}
 #rot{display:none}@media (orientation:portrait){#rot{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background:#819D96;color:#fff;z-index:9;text-align:center;font-size:30px;padding-top:40%}}
 .ow{display:flex}.ow div{flex:1;text-align:center}.ow small{display:block;font-size:12px}.ow svg{display:block;margin:0 auto}.ow .off svg{opacity:.2;-webkit-filter:grayscale(1)}
 .oc{display:flex;justify-content:space-around;align-items:center;margin-top:8px;font-size:15px;font-weight:600}.oc span{display:flex;align-items:center}
+.wxb{flex:1;display:flex;align-items:center;flex-wrap:wrap;margin:0 6px 0 0;background:#F3F6F7;border-radius:18px;padding:5px 14px;font-size:14px;line-height:1.25}.wxb .wi{font-size:20px;margin-right:8px}.wxb b{margin-right:8px}.wxb .wr{flex-basis:100%;font-weight:600}
 </style></head><body>
-<div id="top"><div id="clock"></div><div id="wx"></div><div id="dt"></div><div id="nx"></div><div id="lk" onclick="tab(4)">🔒</div></div>
+<div id="top"><div id="clock"></div><div id="dt"></div><div id="nx"></div><div id="lk" onclick="tab(4)">🔒</div></div>
 <div id="rot">🔄 Gira l’iPad en horitzontal</div>
 <nav><div id="n0" class="on" onclick="tab(0)">☀️ Avui</div><div id="n1" onclick="tab(1)">📋 Setmana</div><div id="n2" onclick="tab(2)">⏰ Horaris</div><div id="n3" onclick="tab(3)">🌈 Calendari</div></nav>
 <div id="v0" class="v on"></div><div id="v1" class="v"></div><div id="v2" class="v"></div><div id="v3" class="v"></div><div id="v4" class="v"></div>
@@ -76,13 +76,13 @@ var C={
  /* tasca: [id, text, icona, franja(0-3), dies opcional: 1=dl ... 7=dg] */
  tasques:{
   aura:[['a1','Fer el llit','🛏️',0],['a2','Vestir-me','👕',0],['a3','Esmorzar','🍞',0],['a4','Rentar-me les dents','😁',0],['a15','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['a5','Preparar la motxilla','🎒',0,'E'],
-   ['a6','Ajudar a parar taula','🍽️',1],
-   ['a7','Berenar','🍎',2,'12345'],['a9','Llegir 15 minuts','📖',2],['a10','Recollir les joguines','📦',2],['a14','Preparar la roba de demà','👖',2,'71234'],['a17','Buidar la motxilla','📤',2,'E'],
-   ['a11','Dutxa','🚿',3,'1357'],['a12','Rentar-me les dents','😁',3],['a16','Pipí tàctic','🚽',3]],
+   ['a21','Dinar','🍴',1],['a6','Ajudar a parar taula','🍽️',1],
+   ['a7','Berenar','🍎',2],['a17','Buidar la motxilla','📤',2,'E'],['a18','Roba del dia','👚',2,'','Guardar o rentar'],['a9','Llegir 30 minuts','📖',2],['a22','Repassar taules de multiplicar','🔢',2],['a23','Guitarra','🎸',2,'3'],['a24','Tennis amb el papi','🎾',2,'7'],['a10','Recollir les joguines','📦',2],['a11','Dutxa','🚿',2,'1357'],['a14','Preparar la roba de demà','👖',2,'71234'],
+   ['a20','Sopar','🍲',3],['a19','Posar pijama','🌙',3],['a12','Rentar-me les dents','😁',3],['a16','Pipí tàctic','🚽',3]],
   elia:[['e1','Fer el llit amb ajuda','🛏️',0],['e2','Vestir-me','👕',0],['e3','Esmorzar','🍞',0],['e4','Rentar-me les dents','😁',0],['e13','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['e15','Preparar la motxilla','🎒',0,'E'],
-   ['e5','Ajudar a parar taula','🍽️',1],
-   ['e6','Berenar','🍎',2,'12345'],['e7','Dibuixar o pintar','🎨',2],['e8','Recollir les joguines','📦',2],['e12','Preparar la roba de demà','👖',2,'71234'],['e16','Buidar la motxilla','📤',2,'E'],
-   ['e9','Dutxa','🚿',3,'1357'],['e10','Rentar-me les dents','😁',3],['e11','Conte i a dormir','📖',3],['e14','Pipí tàctic','🚽',3]]},
+   ['e20','Dinar','🍴',1],['e5','Ajudar a parar taula','🍽️',1],
+   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e22','Practicar sumes','➕',2],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'71234'],
+   ['e19','Sopar','🍲',3],['e18','Posar pijama','🌙',3],['e10','Rentar-me les dents','😁',3],['e14','Pipí tàctic','🚽',3]]},
  /* horari escolar per dia (1=dl ... 5=dv): [inici, fi, text]. Els dies sense horari mostren un sol bloc d'escola */
  horari:{aura:{
   1:[['9:00','10:30','Temps de grup'],['10:30','11:00','Pati'],['11:00','12:30','Música'],['12:30','15:00','Temps de migdia'],['15:00','16:30','Espais']],
@@ -104,7 +104,7 @@ var C={
 };
 /* Èlia: mateixes franges que l'Aura, sense dir què fa a cada una (canvia-ho si vols un horari propi) */
 C.horari.elia={};for(var di=1;di<6;di++)C.horari.elia[di]=C.horari.aura[di].map(function(b){return [b[0],b[1],/pati/i.test(b[2])?'Pati':/migdia/i.test(b[2])?'Temps de migdia':'','',/pati|migdia/i.test(b[2])?'p':'']});
-C.horari.elia[1].forEach(function(b){if(b[2]=='Temps de migdia'){b[3]='Anglès (CiC)';b[4]='x'}});
+C.horari.elia[1].forEach(function(b){if(b[2]=='Temps de migdia'){b[2]='Migdia';b[3]='Anglès (CiC)';b[4]='x'}});
 /* ============ CODI ============ */
 var DS=['Dl','Dt','Dc','Dj','Dv','Ds','Dg'],DL=['Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte','Diumenge'];
 var MN=['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre'];
@@ -183,7 +183,7 @@ function H(){var d=new Date(),h=d.getHours();$('clock').innerHTML=p2(h)+':'+p2(d
 /* Avui */
 function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<W(t);i++){var d=AD(m,i);C.nenes.forEach(function(n){a+=DN(n.id,d);b+=TF(n.id,d).length})}
  var p=b?Math.round(a*100/b):0,ok=p>=C.goal;
- return '<div class="goal"><b>🏆 Objectiu de les dues: arribar al '+C.goal+'% de la setmana</b> — ara '+p+'% '+(ok?'🎉 '+C.premi+'!':'')+'<div class="bar"><span style="width:'+Math.min(p,100)+'%;background:'+(ok?'#B7BC9F':'#C87968')+'"></span></div></div>'}
+ return '<div class="goal"><div class="gt"><b>🏆 Objectiu de les dues: '+C.goal+'%</b> ara '+p+'%'+(ok?' 🎉 '+C.premi+'!':'')+'</div><div class="bar"><span style="width:'+Math.min(p,100)+'%;background:'+(ok?'#B7BC9F':'#C87968')+'"></span></div></div>'}
 function sn(g,d){var s=C.son[g],i=W(d)<6?0:1;return [s.des[i],s.dorm[i]]}
 function info(g,d){var w=W(d),m=d.getHours()*60+d.getMinutes(),s=sn(g,d),o='';
  if(w<6){var b=(C.horari[g][w]||[]).filter(function(x){return m>=mn(x[0])&&m<mn(x[1])})[0];o+='<div class="s'+(b?' on':'')+'">🏫 '+(b?b[0]+'–'+b[1]+' '+b[2]:C.escola[0]+'–'+C.escola[1])+'</div>'}
@@ -196,14 +196,14 @@ function VA(){var d=new Date(),h=d.getHours(),fn=h<12?0:h<16?1:h<20?2:3,o='<div 
    o+='<div class="fg"><div class="fr'+(i==fn?' now':'')+'">'+f[0]+'</div><div class="ft">';
    l.forEach(function(t){var x=dn2.indexOf(t[0])>-1;o+='<div class="t'+(x?' d':'')+(n.maj?' up':'')+'" onclick="tg(\''+g+'\',\''+t[0]+'\')"><i>'+t[2]+'</i><span class="tx">'+t[1]+(t[5]?'<small>'+t[5]+'</small>':'')+'</span><span class="k">'+(x?'⭐':'☆')+'</span></div>'});o+='</div></div>'});
   o+='</div></div>'});
- $('v0').innerHTML=o+'</div>'+goal()}
+ $('v0').innerHTML=o+'</div><div class="bot">'+goal()+WXB()+'</div>'}
 /* Setmana */
 function fp(g,d,f){var a=(S.d[K(d)]||{})[g]||[],ts=TF(g,d).filter(function(t){return t[3]==f});return [ts.filter(function(t){return a.indexOf(t[0])>-1}).length,ts.length]}
 function VS(){var t=new Date(),m=wk0(),o='<div class="cols">';
  C.nenes.forEach(function(n){var g=n.id;o+='<div class="col" style="border-color:'+n.col+'"><div class="hd"><b>'+n.nom+'</b><small>progrés de la setmana</small></div><div class="wk">';
   for(var i=0;i<7;i++){var d=AD(m,i),fut=K(d)>K(t);o+='<div class="wd'+(K(d)==K(t)?' tdy':'')+'"><div class="wb"><span style="height:'+Math.round(PC(g,d)*100)+'%;background:'+(PC(g,d)>=1?'#B7BC9F':'#C87968')+'"></span></div><b>'+DS[i]+'</b><small>'+(fut?'–':DN(g,d)+'/'+TF(g,d).length)+'</small></div>'}
   o+='</div><div class="fr">Compliment per franges</div><div class="fq"><b></b>'+DS.map(function(x){return '<span class="dh">'+x+'</span>'}).join('')+'<em></em></div>';
-  [0,2,3].forEach(function(f){var dn=0,tt=0,c='';
+  [0,1,2,3].forEach(function(f){var dn=0,tt=0,c='';
    for(var j=0;j<7;j++){var d=AD(m,j),r=fp(g,d,f),fut=K(d)>K(t),no=fut||!r[1];if(!no){dn+=r[0];tt+=r[1]}
     c+='<span class="'+(no?'cg':r[0]==r[1]?'cf':r[0]?'cp':'cz')+'">'+(no?'–':r[0]==r[1]?'✓':r[0]+'/'+r[1])+'</span>'}
    o+='<div class="fq"><b>'+C.franges[f][0]+'</b>'+c+'<em>'+(tt?Math.round(dn*100/tt):0)+'%</em></div>'});
@@ -266,11 +266,18 @@ function pn(){if($('pin').value==C.pin){UN=1;VP()}else alert('Codi incorrecte')}
 function rs(w){var t=new Date();if(!confirm('Segur?'))return;for(var i=0;i<(w?7:1);i++){delete S.d[K(w?AD(wk0(),i):t)]}sv();VA();VS()}
 function bk(){$('bk').value=JSON.stringify(S)}
 function rb(){try{var x=JSON.parse($('bk').value);if(x&&x.d){S=x;sv();VA();VS();alert('Còpia restaurada')}}catch(e){alert('Còpia no vàlida')}}
-/* Temps (Open-Meteo, Barcelona) */
+/* Previsió del temps (Open-Meteo, Barcelona) */
+var FC=null;
 function wxi(c,d){return c==0?(d?'☀️':'🌙'):c<3?(d?'🌤️':'☁️'):c==3?'☁️':c<50?'🌫️':c<60?'🌦️':c<70?'🌧️':c<80?'🌨️':c<83?'🌧️':c<87?'🌨️':'⛈️'}
-function GW(){try{var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=2.17&current_weather=true',true);
- x.onload=function(){try{var c=JSON.parse(x.responseText).current_weather;$('wx').innerHTML=wxi(c.weathercode,c.is_day)+' <b>'+Math.round(c.temperature)+'°</b>'}catch(e){}};x.send()}catch(e){}}
-GW();setInterval(GW,900000);
+function wdesc(c){return c==0?'cel clar':c<3?'poc ennuvolat':c==3?'cel tapat':c<50?'boira':c<60?'plugim':c<70?'pluja':c<80?'neu':c<83?'ruixats':c<87?'nevades':'tempestes'}
+function ropa(f){var x=f.mx,r=x<10?'abric gruixut, gorro i bufanda':x<15?'abric i jersei':x<19?'jaqueta i roba de màniga llarga':x<24?'roba de màniga llarga fina i una jaqueta lleugera pel matí':x<29?'roba de màniga curta':'roba fresca de màniga curta i gorra',t='Roba: '+r+'.';
+ if(f.p>=40||(f.c>=51&&f.c<=67)||(f.c>=80&&f.c<=82)||f.c>=95)t+=' ☂️ Agafa el paraigua!';
+ if((f.c>=71&&f.c<=77)||(f.c>=85&&f.c<=86))t+=' Botes i guants per la neu.';
+ return t}
+function WXB(){if(!FC)return '';return '<div class="wxb"><span class="wi">'+wxi(FC.c,1)+'</span><b>Previsió d’avui</b>'+Math.round(FC.mi)+'°–'+Math.round(FC.mx)+'° · '+wdesc(FC.c)+' · prob. de pluja '+FC.p+'%<span class="wr">'+ropa(FC)+'</span></div>'}
+function GW(){try{var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=2.17&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=1',true);
+ x.onload=function(){try{var d=JSON.parse(x.responseText).daily;FC={c:d.weathercode[0],mx:d.temperature_2m_max[0],mi:d.temperature_2m_min[0],p:d.precipitation_probability_max[0]||0};if(CT==0)VA()}catch(e){}};x.send()}catch(e){}}
+GW();setInterval(GW,1800000);
 /* Pestanyes i rellotge */
 var CT=0;
 function tab(i){CT=i;for(var j=0;j<5;j++){$('v'+j).className='v'+(j==i?' on':'');if($('n'+j))$('n'+j).className=j==i?'on':''}UN=i==4?UN:0;
