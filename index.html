@@ -45,7 +45,7 @@ td.td{background-color:#fff;background-image:none;color:#35433F;border:2px solid
 button,input,textarea{font-family:inherit;font-size:18px;padding:8px 12px;margin:4px 2px;border-radius:10px;border:2px solid #819D96;background:#fff;color:#35433F}
 button{background:#D0BD85;font-weight:600}
 .tg{margin-top:6px}
-.fg{display:block;margin:2px 0}.fg .fr{margin:5px 0 1px 4px;padding:0;font-size:12px;line-height:14px;letter-spacing:.5px}.ft{flex:1;display:flex;flex-wrap:wrap;min-width:0}.ft .t{width:48%;margin:2px 1%;box-sizing:border-box}.if{flex:1;margin:0 8px;min-width:0;line-height:1.1}.if .s{display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;font-size:12px}
+.fg{display:block;margin:2px 0}.fg .fr{margin:5px 0 1px 4px;padding:0;font-size:12px;line-height:14px;letter-spacing:.5px}.ft{flex:1;display:flex;flex-wrap:wrap;min-width:0}.ft .t{width:48%;margin:1px 1%;box-sizing:border-box}.if{flex:1;margin:0 8px;min-width:0;line-height:1.1}.if .s{display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;font-size:12px}
 .fq{display:flex;align-items:center;margin:5px 0;font-size:16px}.fq b{width:92px}.fq em{width:52px;text-align:right;font-style:normal;font-weight:600}
 .fq span{flex:1;margin:0 3px;text-align:center;border-radius:8px;padding:6px 0;font-size:14px;font-weight:600}
 .fq .dh{padding:0;background:none;font-size:13px;font-weight:400}.cf{background:#B7BC9F}.cp{background:#D0BD85}.cz{background:#D6BCAB}.cg{background:#E9EEEF}
@@ -61,6 +61,7 @@ button{background:#D0BD85;font-weight:600}
 .ow{display:flex}.ow div{flex:1;text-align:center}.ow small{display:block;font-size:12px}.ow svg{display:block;margin:0 auto}.ow .off svg{opacity:.2;-webkit-filter:grayscale(1)}
 .oc{display:flex;justify-content:space-around;align-items:center;margin-top:8px;font-size:15px;font-weight:600}.oc span{display:flex;align-items:center}
 .wxb{display:flex;align-items:center;flex-wrap:wrap;margin:4px 6px 0;background:#F3F6F7;border-radius:18px;padding:4px 14px;font-size:14px;line-height:1.25}.wxb .wi{font-size:20px;margin-right:8px}.wxb b{margin-right:8px}.wxb .wr{margin-left:10px;font-weight:600}
+.hist{max-height:200px;overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;border-radius:12px;padding:2px 4px}.hr{display:flex;align-items:center;padding:6px 8px;border-bottom:1px solid #DDE4E5;font-size:14px;cursor:pointer}.hr b{width:150px}.hr span{flex:1}
 </style></head><body>
 <div id="top"><div id="clock"></div><div id="dt"></div><div id="nx"></div><span id="sy"></span><div id="lk" onclick="tab(4)">🔒</div></div>
 <div id="rot">🔄 Gira l’iPad en horitzontal</div>
@@ -71,19 +72,19 @@ button{background:#D0BD85;font-weight:600}
 /* ============ CONFIGURACIÓ (edita aquí) ============ */
 var C={
  /* Sincronització entre dispositius (Firebase). Deixa url buit per desactivar-la. */
- sync:{url:'https://familia-dashboard-45f9d-default-rtdb.europe-west1.firebasedatabase.app/',clau:'Da82Vi84Au17El21'},
+ sync:{url:'',clau:''},
  pin:'1234', goal:80, premi:'Plan familiar el cap de setmana',
  nenes:[{id:'aura',nom:'Aura',nai:'2017-12-23',col:'#C87968',tc:'#fff'},{id:'elia',nom:'Èlia',nai:'2021-03-20',col:'#B7BC9F',tc:'#35433F',maj:1}],
  franges:[['MATÍ'],['MIGDIA'],['TARDA'],['NIT']],
  /* tasca: [id, text, icona, franja(0-3), dies opcional: 1=dl ... 7=dg] */
  tasques:{
-  aura:[['a1','Fer el llit','🛏️',0],['a2','Vestir-me','👕',0],['a3','Esmorzar','🍞',0],['a4','Rentar-me les dents','😁',0],['a15','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['a5','Preparar la motxilla','🎒',0,'E'],
+  aura:[['a1','Fer el llit','🛏️',0,'','Guardar el pijama'],['a2','Vestir-me','👕',0],['a3','Esmorzar','🍞',0],['a4','Rentar-me les dents','😁',0],['a15','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['a5','Preparar la motxilla','🎒',0,'E'],
    ['a21','Dinar','🍴',1],['a6','Ajudar a parar taula','🍽️',1],
    ['a7','Berenar','🍎',2],['a17','Buidar la motxilla','📤',2,'E'],['a18','Roba del dia','👚',2,'','Guardar o rentar'],['a9','Llegir 30 minuts','📖',2],['a22','Repassar taules de multiplicar','🔢',2],['a23','Guitarra','🎸',2,'3'],['a24','Tennis amb el papi','🎾',2,'7'],['a10','Recollir les joguines','📦',2],['a11','Dutxa','🚿',2,'1357'],['a14','Preparar la roba de demà','👖',2,'71234'],
    ['a20','Sopar','🍲',3],['a19','Posar pijama','🌙',3],['a12','Rentar-me les dents','😁',3],['a16','Pipí tàctic','🚽',3]],
-  elia:[['e1','Fer el llit amb ajuda','🛏️',0],['e2','Vestir-me','👕',0],['e3','Esmorzar','🍞',0],['e4','Rentar-me les dents','😁',0],['e13','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['e15','Preparar la motxilla','🎒',0,'E'],
+  elia:[['e1','Fer el llit amb ajuda','🛏️',0,'','Guardar el pijama'],['e2','Vestir-me','👕',0],['e3','Esmorzar','🍞',0],['e4','Rentar-me les dents','😁',0],['e13','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['e15','Preparar la motxilla','🎒',0,'E'],
    ['e20','Dinar','🍴',1],['e5','Ajudar a parar taula','🍽️',1],
-   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e22','Practicar sumes','➕',2],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'71234'],
+   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e22','Practicar sumes','➕',2,'234567'],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'71234'],
    ['e19','Sopar','🍲',3],['e18','Posar pijama','🌙',3],['e10','Rentar-me les dents','😁',3],['e14','Pipí tàctic','🚽',3]]},
  /* horari escolar per dia (1=dl ... 5=dv): [inici, fi, text]. Els dies sense horari mostren un sol bloc d'escola */
  horari:{aura:{
@@ -158,7 +159,7 @@ function ens(y){if(EY[y])return;EY[y]=1;
  ['10-12','Dia del Pilar','f','📅','Festivitat de la Mare de Déu del Pilar; és festiu a tot Espanya.'],
  ['10-31','Castanyada i Halloween','t','🌰','Es mengen castanyes, panellets i moniatos; també es fa Halloween.'],
  ['11-01','Tots Sants','f','🕯️','Es recorden els difunts i es porten flors als cementiris.'],
- ['11-09','Isaac (Tiet)','b','🎂',''],['11-14','Auris (Iaia)','b','🎂',''],
+ ['11-05','Jan (Univers E)','b','🎂',''],['11-09','Isaac (Tiet)','b','🎂',''],['11-14','Auris (Iaia)','b','🎂',''],
  ['12-06','Dia de la Constitució','f','📜','Recorda l’aprovació de la Constitució espanyola el 1978.'],
  ['12-08','La Immaculada · comença el Caga Tió','f','🎄','Festa religiosa de la Immaculada Concepció; ja es posa el tió a casa.'],
  ['12-24','Nit de Nadal','t','🎄','Sopar en família i el tió caga els regals.'],
@@ -184,7 +185,7 @@ function H(){var d=new Date(),h=d.getHours();$('clock').innerHTML=p2(h)+':'+p2(d
  else for(var i=0;i<400&&!o;i++){var es=evOn(AD(t,i)).filter(nf);if(es.length)o=bx(es[0],i==0?'avui':i==1?'demà':'d’aquí '+i+' dies')}
  $('nx').innerHTML=o}
 /* Avui */
-function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<W(t);i++){var d=AD(m,i);C.nenes.forEach(function(n){a+=DN(n.id,d);b+=TF(n.id,d).length})}
+function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<7;i++){var d=AD(m,i);C.nenes.forEach(function(n){a+=DN(n.id,d);b+=TF(n.id,d).length})}
  var p=b?Math.round(a*100/b):0,ok=p>=C.goal;
  return '<div class="goal"><div class="gt"><b>🏆 Objectiu de les dues: '+C.goal+'%</b> ara '+p+'%'+(ok?' 🎉 '+C.premi+'!':'')+'</div><div class="bar"><span style="width:'+Math.min(p,100)+'%;background:'+(ok?'#B7BC9F':'#C87968')+'"></span></div></div>'}
 function sn(g,d){var s=C.son[g],i=W(d)<6?0:1;return [s.des[i],s.dorm[i]]}
@@ -256,14 +257,22 @@ function VP(){var o='<div class="col" style="border-color:#35433F;margin:0"><but
   PE()+'<div class="fr">Còpia de seguretat</div><button onclick="bk()">Generar còpia</button><button onclick="rb()">Restaurar còpia</button><br><textarea id="bk" rows="5" style="width:96%"></textarea>'+
   '<div class="fr">Premi de la setmana: '+C.premi+'. Per canviar tasques, horari, extraescolars o el codi, edita la zona CONFIGURACIÓ del fitxer index.html.</div>';
  $('v4').innerHTML=o+'</div>'}
-var PK='';
-function PE(){var t=new Date(),m=wk0(),o='<div class="fr">Retocar dies de la setmana</div><div>',d,i;
- if(!PK||PK>K(t))PK=K(t);
- for(i=0;i<W(t);i++){d=AD(m,i);o+='<button onclick="PK=\''+K(d)+'\';VP()" style="'+(K(d)==PK?'background:#D0BD85':'background:#fff')+'">'+DS[i]+' '+d.getDate()+'</button>'}
+var PK='',PW=0;
+function wl(m){var e=AD(m,6),M=function(x){return MN[x.getMonth()].toLowerCase().slice(0,3)};return m.getDate()+' '+M(m)+' – '+e.getDate()+' '+M(e)}
+function wst(g,m,tk){var dn=0,tt=0,md=[0,0,0,0],i,d,n;for(i=0;i<7;i++){d=AD(m,i);if(K(d)>tk)break;n=TF(g,d).length;if(!n)continue;dn+=DN(g,d);tt+=n;md[ML(PC(g,d))]++}return {p:tt?Math.round(dn*100/tt):0,m:md}}
+function PE(){var t=new Date(),tk=K(t),m=AD(wk0(),PW*7),e=AD(m,6),i,d,o;
+ if(!PK||PK<K(m)||PK>K(e)||PK>tk)PK=PW==0?tk:K(e);
+ o='<div class="fr">Retocar tasques de qualsevol setmana</div><div><button onclick="PW--;PK=\'\';VP()">◀</button><b style="margin:0 8px">Setmana del '+wl(m)+'</b>'+(PW<0?'<button onclick="PW++;PK=\'\';VP()">▶</button>':'')+'</div><div>';
+ for(i=0;i<7;i++){d=AD(m,i);if(K(d)>tk)break;o+='<button onclick="PK=\''+K(d)+'\';VP()" style="background:'+(K(d)==PK?'#D0BD85':'#fff')+'">'+DS[i]+' '+d.getDate()+'</button>'}
  o+='</div><div class="cols" style="margin-top:6px">';d=P(PK);
  C.nenes.forEach(function(n){var g=n.id,a=(S.d[PK]||{})[g]||[];o+='<div style="flex:1;margin:0 4px"><b>'+n.nom+' · '+DL[W(d)-1].toLowerCase()+' '+d.getDate()+'</b>';
   TF(g,d).forEach(function(q){var x=a.indexOf(q[0])>-1;o+='<div class="t'+(x?' d':'')+(n.maj?' up':'')+'" onclick="pt(\''+g+'\',\''+q[0]+'\')"><i>'+q[2]+'</i><span class="tx">'+q[1]+(q[5]?'<small>'+q[5]+'</small>':'')+'</span><span class="k">'+(x?'⭐':'☆')+'</span></div>'});
-  o+='</div>'});return o+'</div>'}
+  o+='</div>'});
+ o+='</div>';
+ var ks=Object.keys(S.d).sort(),h='';
+ if(ks.length){var st=P(ks[0]),k=0,w=wk0();st=AD(st,-(W(st)-1));
+  while(w>=st&&k<80){h+='<div class="hr" onclick="PW=-'+k+';PK=\'\';VP()"><b>'+wl(w)+'</b>'+C.nenes.map(function(n){var r=wst(n.id,w,tk);return '<span>'+n.nom+' '+r.p+'% · 🥇'+r.m[3]+' 🥈'+r.m[2]+' 🥉'+r.m[1]+'</span>'}).join('')+'</div>';k++;w=AD(w,-7)}}
+ return o+'<div class="fr">Històric complet (toca una setmana per veure-la i retocar-la)</div><div class="hist">'+(h||'Encara no hi ha dades.')+'</div>'}
 function pt(g,id){flip(PK,g,id);VP();VA();VS()}
 function pn(){if($('pin').value==C.pin){UN=1;VP()}else alert('Codi incorrecte')}
 function rs(w){var t=new Date();if(!confirm('Segur?'))return;for(var i=0;i<(w?7:1);i++){var k=K(w?AD(wk0(),i):t),o=S.d[k]||{};for(var g in o)o[g].slice().forEach(function(id){flip(k,g,id)})}VA();VS()}
@@ -277,9 +286,9 @@ function ropa(f){var x=f.mx,r=x<10?'abric gruixut, gorro i bufanda':x<15?'abric 
  if(f.p>=40||(f.c>=51&&f.c<=67)||(f.c>=80&&f.c<=82)||f.c>=95)t+=' ☂️ Agafa el paraigua!';
  if((f.c>=71&&f.c<=77)||(f.c>=85&&f.c<=86))t+=' Botes i guants per la neu.';
  return t}
-function WXB(){if(!FC)return '';return '<div class="wxb"><span class="wi">'+wxi(FC.c,1)+'</span><b>Previsió de demà</b>'+Math.round(FC.mi)+'°–'+Math.round(FC.mx)+'° · '+wdesc(FC.c)+' · prob. de pluja '+FC.p+'%<span class="wr">'+ropa(FC)+'</span></div>'}
+function WXB(){if(!FC)return '';var tm=new Date().getHours()>=17,f=FC[tm?1:0];return '<div class="wxb"><span class="wi">'+wxi(f.c,1)+'</span><b>Previsió '+(tm?'de demà':'d’avui')+'</b>'+Math.round(f.mi)+'°–'+Math.round(f.mx)+'° · '+wdesc(f.c)+' · prob. de pluja '+f.p+'%<span class="wr">'+ropa(f)+'</span></div>'}
 function GW(){try{var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=2.17&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=2',true);
- x.onload=function(){try{var d=JSON.parse(x.responseText).daily;FC={c:d.weathercode[1],mx:d.temperature_2m_max[1],mi:d.temperature_2m_min[1],p:d.precipitation_probability_max[1]||0};if(CT==0)VA()}catch(e){}};x.send()}catch(e){}}
+ x.onload=function(){try{var d=JSON.parse(x.responseText).daily;FC=[0,1].map(function(i){return {c:d.weathercode[i],mx:d.temperature_2m_max[i],mi:d.temperature_2m_min[i],p:d.precipitation_probability_max[i]||0}});if(CT==0)VA()}catch(e){}};x.send()}catch(e){}}
 GW();setInterval(GW,1800000);
 /* Sincronització (Firebase Realtime Database, API REST) */
 function flip(k,g,id){var o=S.d[k]=S.d[k]||{},a=o[g]=o[g]||[],i=a.indexOf(id),n=Date.now(),p=k+'/'+g+'/'+id,v;if(i>-1){a.splice(i,1);v=-n}else{a.push(id);v=n}S.t[p]=v;S.q[p]=v;sv();push()}
