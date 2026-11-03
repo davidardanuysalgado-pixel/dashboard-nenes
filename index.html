@@ -62,6 +62,7 @@ button{background:#D0BD85;font-weight:600}
 .oc{display:flex;justify-content:space-around;align-items:center;margin-top:8px;font-size:15px;font-weight:600}.oc span{display:flex;align-items:center}
 .wxb{display:flex;align-items:center;flex-wrap:wrap;margin:4px 6px 0;background:#F3F6F7;border-radius:18px;padding:4px 14px;font-size:14px;line-height:1.25}.wxb .wi{font-size:20px;margin-right:8px}.wxb b{margin-right:8px}.wxb .wr{margin-left:10px;font-weight:600}
 .hist{max-height:200px;overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;border-radius:12px;padding:2px 4px}.hr{display:flex;align-items:center;padding:6px 8px;border-bottom:1px solid #DDE4E5;font-size:14px;cursor:pointer}.hr b{width:150px}.hr span{flex:1}
+.s.dm{background:#819D96;color:#fff;font-weight:600}
 </style></head><body>
 <div id="top"><div id="clock"></div><div id="dt"></div><div id="nx"></div><span id="sy"></span><div id="lk" onclick="tab(4)">🔒</div></div>
 <div id="rot">🔄 Gira l’iPad en horitzontal</div>
@@ -72,7 +73,7 @@ button{background:#D0BD85;font-weight:600}
 /* ============ CONFIGURACIÓ (edita aquí) ============ */
 var C={
  /* Sincronització entre dispositius (Firebase). Deixa url buit per desactivar-la. */
- sync:{url:'https://familia-dashboard-45f9d-default-rtdb.europe-west1.firebasedatabase.app/',clau:'Da82Vi84Au17El21'},
+ sync:{url:'',clau:''},
  pin:'1234', goal:80, premi:'Plan familiar el cap de setmana',
  nenes:[{id:'aura',nom:'Aura',nai:'2017-12-23',col:'#C87968',tc:'#fff'},{id:'elia',nom:'Èlia',nai:'2021-03-20',col:'#B7BC9F',tc:'#35433F',maj:1}],
  franges:[['MATÍ'],['MIGDIA'],['TARDA'],['NIT']],
@@ -84,7 +85,7 @@ var C={
    ['a20','Sopar','🍲',3],['a19','Posar pijama','🌙',3],['a12','Rentar-me les dents','😁',3],['a16','Pipí tàctic','🚽',3]],
   elia:[['e1','Fer el llit amb ajuda','🛏️',0,'','Guardar el pijama'],['e2','Vestir-me','👕',0],['e3','Esmorzar','🍞',0],['e4','Rentar-me les dents','😁',0],['e13','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['e15','Preparar la motxilla','🎒',0,'E'],
    ['e20','Dinar','🍴',1],['e5','Ajudar a parar taula','🍽️',1],
-   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e22','Practicar sumes','➕',2,'234567'],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'71234'],
+   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'71234'],
    ['e19','Sopar','🍲',3],['e18','Posar pijama','🌙',3],['e10','Rentar-me les dents','😁',3],['e14','Pipí tàctic','🚽',3]]},
  /* horari escolar per dia (1=dl ... 5=dv): [inici, fi, text]. Els dies sense horari mostren un sol bloc d'escola */
  horari:{aura:{
@@ -99,7 +100,7 @@ var C={
   ['aura','3','16:30','17:45','Costura',''],['elia','3','16:30','17:45','Música',''],
   ['aura','4','16:55','18:15','Música',''],['elia','5','17:15','18:15','Piscina','']],
  /* dies especials: [des de, fins a, text, tipus ('e' escola, 'u' esdeveniment puntual), icona, descripció, hora inici, hora fi (les dues últimes opcionals: sense hora = tot el dia)] */
- esc:[['2026-11-02','2026-11-02','Dentista d’Aura · 15:30','u','🏥'],['2026-11-08','2026-11-08','Escalada (Daniel i Martí)','u','⛰️']],
+ esc:[['2026-11-02','2026-11-02','Dentista d’Aura · 15:30','u','🏥'],['2026-11-06','2026-11-06','Alba ve a casa','u','🏠'],['2026-11-08','2026-11-08','Escalada (Daniel i Martí)','u','⛰️']],
  /* horari de l'escola dl-dv */
  escola:['9:00','16:30'],
  /* despertar i anar a dormir [dl-dv, cap de setmana]; null = lliure */
@@ -189,13 +190,15 @@ function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<7;i++){var d=AD(m
  var p=b?Math.round(a*100/b):0,ok=p>=C.goal;
  return '<div class="goal"><div class="gt"><b>🏆 Objectiu de les dues: '+C.goal+'%</b> ara '+p+'%'+(ok?' 🎉 '+C.premi+'!':'')+'</div><div class="bar"><span style="width:'+Math.min(p,100)+'%;background:'+(ok?'#B7BC9F':'#C87968')+'"></span></div></div>'}
 function sn(g,d){var s=C.son[g],i=W(d)<6?0:1;return [s.des[i],s.dorm[i]]}
-function info(g,d){var w=W(d),m=d.getHours()*60+d.getMinutes(),s=sn(g,d),o='';
- if(w<6){var b=(C.horari[g][w]||[]).filter(function(x){return m>=mn(x[0])&&m<mn(x[1])})[0];o+='<div class="s'+(b?' on':'')+'">🏫 '+(b?b[0]+'–'+b[1]+' '+b[2]:C.escola[0]+'–'+C.escola[1])+'</div>'}
+function hasS(d){return W(d)<6&&!isF(d)&&!evOn(d).some(function(e){return e.c=='e'})}
+function info(g,d,tm){var w=W(d),m=d.getHours()*60+d.getMinutes(),o=tm?'<div class="s dm">Demà</div>':'';
+ if(hasS(d)){var b=tm?null:(C.horari[g][w]||[]).filter(function(x){return m>=mn(x[0])&&m<mn(x[1])})[0];o+='<div class="s'+(b?' on':'')+'">🏫 '+(b?b[0]+'–'+b[1]+' '+b[2]:'Escola '+C.escola[0]+'–'+C.escola[1])+'</div>'}
+ else o+='<div class="s">🏠 Sense escola</div>';
  acts(g,w).forEach(function(a){o+='<div class="s ac">'+a[2]+'–'+a[3]+' '+a[4]+(a[5]?' · '+a[5]:'')+'</div>'});
  return o}
 function VA(){var d=new Date(),h=d.getHours(),fn=h<12?0:h<16?1:h<20?2:3,o='<div class="cols">';
  C.nenes.forEach(function(n){var g=n.id,ts=TF(g,d),dn=DN(g,d),pc=ts.length?Math.round(dn*100/ts.length):0,dn2=(S.d[K(d)]||{})[g]||[];
-  o+='<div class="col av" style="border-color:'+n.col+'"><div class="hd av"><b>'+n.nom+'</b><div class="if">'+info(g,d)+'</div><span class="md">'+(ML(pc/100)?owl(ML(pc/100),46):'')+'</span><span class="ch">⭐ '+ws(g)+'</span></div><div class="bar"><span style="width:'+pc+'%;background:#C87968"></span><u style="left:50%"></u><u style="left:75%"></u><em class="mk" style="right:50%">🥉 50%</em><em class="mk" style="right:25%">🥈 75%</em><em class="mk" style="right:0">🥇 100%</em></div>';
+  o+='<div class="col av" style="border-color:'+n.col+'"><div class="hd av"><b>'+n.nom+'</b><div class="if">'+info(g,h>=18?AD(d,1):d,h>=18)+'</div><span class="md">'+(ML(pc/100)?owl(ML(pc/100),46):'')+'</span><span class="ch">⭐ '+ws(g)+'</span></div><div class="bar"><span style="width:'+pc+'%;background:#C87968"></span><u style="left:50%"></u><u style="left:75%"></u><em class="mk" style="right:50%">🥉 50%</em><em class="mk" style="right:25%">🥈 75%</em><em class="mk" style="right:0">🥇 100%</em></div>';
   o+='<div class="tg">';C.franges.forEach(function(f,i){var l=ts.filter(function(t){return t[3]==i});if(!l.length)return;
    o+='<div class="fg"><div class="fr'+(i==fn?' now':'')+'">'+f[0]+'</div><div class="ft">';
    l.forEach(function(t){var x=dn2.indexOf(t[0])>-1;o+='<div class="t'+(x?' d':'')+(n.maj?' up':'')+'" onclick="tg(\''+g+'\',\''+t[0]+'\')"><i>'+t[2]+'</i><span class="tx">'+t[1]+(t[5]?'<small>'+t[5]+'</small>':'')+'</span><span class="k">'+(x?'⭐':'☆')+'</span></div>'});o+='</div></div>'});
