@@ -62,7 +62,7 @@ button{background:#D0BD85;font-weight:600}
 .fq span{flex:1;margin:0 3px;text-align:center;border-radius:8px;padding:6px 0;font-size:14px;font-weight:600}
 .fq .dh{padding:0;background:none;font-size:13px;font-weight:400}.cf{background:#B7BC9F}.cp{background:#D0BD85}.cz{background:#D6BCAB}.cg{background:#E9EEEF}
 .gh{display:flex;margin-left:38px}.gh b{flex:1;text-align:center;font-size:14px}
-.gb{position:relative;display:flex;height:460px}.gl{width:38px;position:relative;font-size:11px;color:#6B8780}.gl span{position:absolute;right:3px;margin-top:-7px}
+.gb{position:relative;display:flex;height:438px}.gl{width:38px;position:relative;font-size:11px;color:#6B8780}.gl span{position:absolute;right:3px;margin-top:-7px}
 .gc{flex:1;position:relative;border-left:1px solid #DDE4E5;}.gc.tdy{background-color:rgba(208,189,133,.25)}.hl{position:absolute;left:38px;right:0;height:1px;background:#DDE4E5}
 .bk{position:absolute;left:1px;right:1px;font-size:11px;line-height:1.1;overflow:hidden;text-align:center;border-radius:5px;padding:2px 1px 0;box-sizing:border-box;border-bottom:1px solid #F3F6F7;word-wrap:break-word}.bk i{font-style:normal;font-size:10px}
 .bk.sl{background:#DDE4E5;color:#35433F}.bk.sc{background:#819D96;color:#fff}
@@ -83,9 +83,10 @@ button{background:#D0BD85;font-weight:600}
 <div id="toast"></div>
 <script>
 /* ============ CONFIGURACIÓ (edita aquí) ============ */
+var TIO='<svg width="26" height="18" viewBox="0 0 40 28" style="vertical-align:-4px"><rect x="9" y="8" width="28" height="14" rx="6" fill="#8B5A2B"/><path d="M16 10v9M21 9v11M26 10v9" stroke="#6B4220" stroke-width="1" fill="none"/><rect x="24" y="7" width="9" height="16" rx="2" fill="#D64541"/><rect x="27" y="7" width="3" height="16" fill="#F2C14E"/><rect x="14" y="21" width="3.5" height="6" rx="1.2" fill="#5B3A1E"/><rect x="29" y="21" width="3.5" height="6" rx="1.2" fill="#5B3A1E"/><circle cx="11" cy="15" r="8.5" fill="#C68E5A"/><path d="M2.5 12C3 4 13 2 19 7c-5-1-10 0-14 5z" fill="#D64541"/><path d="M2.6 11.5c4-1.6 9-2 14-.7" stroke="#3A2A1A" stroke-width="1.6" fill="none"/><circle cx="7.8" cy="15" r="1.9" fill="#fff"/><circle cx="13.6" cy="15" r="1.9" fill="#fff"/><circle cx="8.1" cy="15.3" r=".9" fill="#222"/><circle cx="13.9" cy="15.3" r=".9" fill="#222"/><circle cx="5.6" cy="18.2" r="1.3" fill="#E57373"/><circle cx="16" cy="18.2" r="1.3" fill="#E57373"/><path d="M7.5 19.3q3.2 2.6 6.4 0" stroke="#5B2A12" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>';
 var C={
  /* Sincronització entre dispositius (Firebase). Deixa url buit per desactivar-la. */
- sync:{url:'https://familia-dashboard-45f9d-default-rtdb.europe-west1.firebasedatabase.app/Da82Vi84Au17El21',clau:'Da82Vi84Au17El21'},
+ sync:{url:'',clau:''},
  pin:'1234', goal:80, premi:'Plan familiar el cap de setmana',
  nenes:[{id:'aura',nom:'Aura',nai:'2017-12-23',col:'#C87968',tc:'#fff'},{id:'elia',nom:'Èlia',nai:'2021-03-20',col:'#B7BC9F',tc:'#35433F',maj:1}],
  franges:[['MATÍ'],['MIGDIA'],['TARDA'],['NIT']],
@@ -93,11 +94,11 @@ var C={
  tasques:{
   aura:[['a1','Fer el llit','🛏️',0,'','Guardar el pijama'],['a2','Vestir-me','👕',0],['a3','Esmorzar','🍞',0],['a4','Rentar-me les dents','😁',0],['a15','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['a5','Preparar la motxilla','🎒',0,'E'],
    ['a21','Dinar','🍴',1],['a6','Ajudar a parar taula','🍽️',1],
-   ['a7','Berenar','🍎',2],['a17','Buidar la motxilla','📤',2,'E'],['a18','Roba del dia','👚',2,'','Guardar o rentar'],['a9','Llegir 30 minuts','📖',2],['a22','Repassar taules de multiplicar','🔢',2],['a23','Guitarra','🎸',2,'3'],['a24','Tennis amb el papi','🎾',2,'7'],['a10','Recollir les joguines','📦',2],['a11','Dutxa','🚿',2,'1357'],['a14','Preparar la roba de demà','👖',2,'71234'],
+   ['a7','Berenar','🍎',2],['a17','Buidar la motxilla','📤',2,'E'],['a18','Roba del dia','👚',2,'','Guardar o rentar'],['a9','Llegir 30 minuts','📖',2],['a22','Repassar taules de multiplicar','🔢',2],['a23','Guitarra','🎸',2,'3'],['a24','Tennis amb el papi','🎾',2,'7'],['a10','Recollir les joguines','📦',2],['a11','Dutxa','🚿',2,'1357'],['a14','Preparar la roba de demà','👖',2,'1234'],['a25','Preparar la roba de demà','👖',2,'7','Amb les bambes de tennis'],['a26','Preparar la roba de tennis','🎽',2,'7'],
    ['a20','Sopar','🍲',3],['a19','Posar pijama','🌙',3],['a12','Rentar-me les dents','😁',3],['a16','Pipí tàctic','🚽',3]],
   elia:[['e1','Fer el llit amb ajuda','🛏️',0,'','Guardar el pijama'],['e2','Vestir-me','👕',0],['e3','Esmorzar','🍞',0],['e4','Rentar-me les dents','😁',0],['e13','Higiene','💧',0,'','Pipí, cara i pentinar-me'],['e15','Preparar la motxilla','🎒',0,'E'],
    ['e20','Dinar','🍴',1],['e5','Ajudar a parar taula','🍽️',1],
-   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'71234'],
+   ['e6','Berenar','🍎',2],['e16','Buidar la motxilla','📤',2,'E'],['e17','Roba del dia','👚',2,'','Guardar o rentar'],['e21','Practicar lectura','📖',2],['e23','Tennis amb el papi','🎾',2,'7'],['e8','Recollir les joguines','📦',2],['e9','Dutxa','🚿',2,'1357'],['e12','Preparar la roba de demà','👖',2,'1234'],['e24','Preparar la roba de demà','👖',2,'7','Amb les bambes de tennis'],['e25','Preparar la roba de tennis','🎽',2,'7'],
    ['e19','Sopar','🍲',3],['e18','Posar pijama','🌙',3],['e10','Rentar-me les dents','😁',3],['e14','Pipí tàctic','🚽',3]]},
  /* horari escolar per dia (1=dl ... 5=dv): [inici, fi, text]. Els dies sense horari mostren un sol bloc d'escola */
  horari:{aura:{
@@ -105,22 +106,24 @@ var C={
   2:[['9:00','10:30','Temps de grup'],['10:30','11:00','Pati'],['11:00','12:30','Temps de grup'],['12:30','15:00','Temps de migdia'],['15:00','16:30','Espais']],
   3:[['9:00','10:30','Anglès / Temps de grup','Treball sistemàtic'],['10:30','11:00','Pati'],['11:00','12:30','Temps de grup','Taller d’escriptura'],['12:30','15:00','Temps de migdia'],['15:00','16:30','Cos i moviment']],
   4:[['9:00','10:30','Temps de grup'],['10:30','11:00','Pati'],['11:00','12:30','Espais'],['12:30','15:00','Migdia','Anglès (CiC)','x'],['15:00','16:30','Temps de grup','Rincones de castellano']],
-  5:[['9:00','10:30','Temps de grup','Tastets matemàtics'],['10:30','11:00','Pati'],['11:00','12:30','Temps de grup'],['12:30','15:00','Temps de migdia'],['15:00','16:30','Anglès']]},elia:{}},
+  5:[['9:00','10:30','Temps de grup','Tastets matemàtics'],['10:30','11:00','Pati'],['11:00','12:30','Temps de grup'],['12:30','15:00','Temps de migdia'],['15:00','16:30','Anglès']]},elia:{
+  1:[['9:00','10:30','Ambients'],['10:30','11:00','Esmorzar + English breakfast','','d'],['11:00','11:45','Joc a l’exterior','','p'],['11:45','12:30','Moments de grup'],['12:30','15:00','Migdia','Anglès (CiC)','x'],['15:00','16:30','Tertúlia literària']],
+  2:[['9:00','10:30','Ambients'],['10:30','11:00','Esmorzar','','d'],['11:00','11:45','Joc a l’exterior','','p'],['11:45','12:30','Petit grup'],['12:30','15:00','Dinar','','p'],['15:00','16:30','Propostes artístiques']],
+  3:[['9:00','10:30','Ambients'],['10:30','11:00','Esmorzar + English breakfast','','d'],['11:00','11:45','Joc a l’exterior','','p'],['11:45','12:30','Petit grup'],['12:30','15:00','Dinar','','p'],['15:00','16:30','Música']],
+  4:[['9:00','10:30','Ambients'],['10:30','11:00','Esmorzar','','d'],['11:00','11:45','Joc a l’exterior','','p'],['11:45','12:30','Moments de grup'],['12:30','15:00','Dinar','','p'],['15:00','16:30','Propostes matemàtiques']],
+  5:[['9:00','10:30','Propostes a l’aula'],['10:30','11:00','Esmorzar','','d'],['11:00','11:45','Joc a l’exterior','','p'],['11:45','12:30','Petit grup'],['12:30','15:00','Dinar','','p'],['15:00','16:30','Psicomotricitat']]}},
  /* extraescolars (EXEMPLES): [nena, dies, inici, fi, activitat, lloc] */
  act:[['aura','1','17:30','19:30','Tennis',''],['elia','1','17:30','18:30','Tennis',''],
   ['aura','2','16:30','17:45','Ciències',''],['elia','2','16:30','17:45','Patinatge',''],
   ['aura','3','16:30','17:45','Costura',''],['elia','3','16:30','17:45','Música',''],
   ['aura','4','16:55','18:15','Música',''],['elia','5','17:15','18:15','Piscina','']],
  /* dies especials: [des de, fins a, text, tipus ('e' escola, 'u' esdeveniment puntual), icona, descripció, hora inici, hora fi (les dues últimes opcionals: sense hora = tot el dia)] */
- esc:[['2026-11-02','2026-11-02','Dentista d’Aura · 15:30','u','🏥'],['2026-11-06','2026-11-06','Alba ve a casa','u','🏠'],['2026-11-08','2026-11-08','Escalada (Daniel i Martí)','u','⛰️']],
+ esc:[['2026-11-02','2026-11-02','Dentista d’Aura · 15:30','u','🏥'],['2026-11-06','2026-11-06','Alba ve a casa','u','🏠'],['2026-11-08','2026-11-08','Escalada (Daniel i Martí)','u','⛰️'],['2026-11-20','2026-11-20','Aura dorm a casa d’Andrea','u','🏠'],['2026-11-27','2026-11-27','Gala i Jan vénen a dormir','u','🛏️'],['2026-11-28','2026-11-28','Anem a buscar el Tió','u',TIO],['2026-11-23','2026-11-23','Celebració de Santa Cecília a l’escola','u','🎶']],
  /* horari de l'escola dl-dv */
  escola:['9:00','16:30'],
  /* despertar i anar a dormir [dl-dv, cap de setmana]; null = lliure */
  son:{aura:{des:['7:45',null],dorm:['21:30',null]},elia:{des:['7:45',null],dorm:['21:30',null]}}
 };
-/* Èlia: mateixes franges que l'Aura, sense dir què fa a cada una (canvia-ho si vols un horari propi) */
-C.horari.elia={};for(var di=1;di<6;di++)C.horari.elia[di]=C.horari.aura[di].map(function(b){return [b[0],b[1],/pati/i.test(b[2])?'Pati':/migdia/i.test(b[2])?'Temps de migdia':'','',/pati|migdia/i.test(b[2])?'p':'']});
-C.horari.elia[1].forEach(function(b){if(b[2]=='Temps de migdia'){b[2]='Migdia';b[3]='Anglès (CiC)';b[4]='x'}});
 /* ============ CODI ============ */
 var DS=['Dl','Dt','Dc','Dj','Dv','Ds','Dg'],DL=['Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte','Diumenge'];
 var MN=['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre'];
@@ -209,11 +212,11 @@ function goal(){var t=new Date(),m=wk0(),a=0,b=0;for(var i=0;i<7;i++){var d=AD(m
   '<div class="gk"><div class="bar"><span style="width:'+w+'%;background:'+(ok?'#B7BC9F':'#C87968')+'"></span><u style="left:25%"></u><u style="left:50%"></u><u style="left:75%"></u></div>'+
   '<div class="gowls" style="left:'+w+'%">'+owl(ok?3:0,30)+owl(ok?3:0,30)+'</div><div class="gpz">'+(ok?'🎉':'🎁')+'</div></div></div>'}
 function hasS(d){return W(d)<6&&!isF(d)&&!evOn(d).some(function(e){return e.c=='e'})}
-function info(g,d,tm){var w=W(d),m=d.getHours()*60+d.getMinutes(),o=tm?'<div class="s dm">Demà</div>':'';
- if(hasS(d)){var b=tm?null:(C.horari[g][w]||[]).filter(function(x){return m>=mn(x[0])&&m<mn(x[1])})[0];o+='<div class="s'+(b?' on':'')+'">🏫 '+(b?b[0]+'–'+b[1]+' '+b[2]:'Escola '+C.escola[0]+'–'+C.escola[1])+'</div>'}
- else o+='<div class="s">🏠 Sense escola</div>';
- acts(g,w).forEach(function(a){o+='<div class="s ac">'+a[2]+'–'+a[3]+' '+a[4]+(a[5]?' · '+a[5]:'')+'</div>'});
- return o}
+function spec(g,d){return hasS(d)?(C.horari[g][W(d)]||[]).filter(function(b){return /cos i moviment|psicomotricitat/i.test(b[2])})[0]||null:null}
+function info(g,d,tm){var o='',c=0,sp=spec(g,d);
+ if(sp){c=1;o+='<div class="s ac">🏃 '+sp[0]+'–'+sp[1]+' '+sp[2]+'</div>'}
+ acts(g,W(d)).forEach(function(a){c=1;o+='<div class="s ac">'+a[2]+'–'+a[3]+' '+a[4]+(a[5]?' · '+a[5]:'')+'</div>'});
+ return c&&tm?'<div class="s dm">Demà</div>'+o:o}
 function VA(){var d=new Date(),h=d.getHours(),fn=h<12?0:h<16?1:h<20?2:3,o='<div class="cols">';
  C.nenes.forEach(function(n){var g=n.id,ts=TF(g,d),dn=DN(g,d),pc=ts.length?Math.round(dn*100/ts.length):0,dn2=(S.d[K(d)]||{})[g]||[];
   o+='<div class="col av" style="border-color:'+n.col+'"><div class="hd av"><b>'+n.nom+'</b><div class="if">'+info(g,h>=18?AD(d,1):d,h>=18)+'</div><span class="md">'+(ML(pc/100)?owl(ML(pc/100),46):'')+'</span><span class="ch">⭐ '+ws(g)+'</span></div><div class="bar"><span style="width:'+pc+'%;background:#C87968"></span><u style="left:50%"></u><u style="left:75%"></u><em class="mk" style="right:50%">🥉 50%</em><em class="mk" style="right:25%">🥈 75%</em><em class="mk" style="right:0">🥇 100%</em></div>';
@@ -239,7 +242,7 @@ function VS(){var t=new Date(),m=wk0(),o='<div class="cols">';
   o+='</div>'});
  $('v1').innerHTML=o+'</div>'}
 /* Horaris */
-var HA=540,HB=Math.ceil(Math.max.apply(null,C.act.map(function(a){return mn(a[3])}).concat([mn(C.escola[1])]))/30)*30,HP=460/(HB-HA);
+var HA=540,HB=Math.ceil(Math.max.apply(null,C.act.map(function(a){return mn(a[3])}).concat([mn(C.escola[1])]))/30)*30,HP=438/(HB-HA);
 function ty(m){return Math.round((Math.max(HA,Math.min(HB,m))-HA)*HP)}
 function hb(a,b,cl,tx,st){var t=ty(a);return '<div class="bk '+cl+'" style="top:'+t+'px;height:'+(ty(b)-t)+'px;'+(st||'')+'">'+tx+'</div>'}
 function VH(){var t=new Date(),nm=t.getHours()*60+t.getMinutes(),r='<div class="cols">',h,m0=wk0(),wev=[],q,EC={f:'#D6BCAB',t:'#B7BC9F',b:'#E5BDB2',u:'#D0BD85',e:'#DDE4E5'};
@@ -252,7 +255,7 @@ function VH(){var t=new Date(),nm=t.getHours()*60+t.getMinutes(),r='<div class="
   for(var i=1;i<=5;i++){
    r+='<div class="gc'+(W(t)==i?' tdy':'')+'">';
    if(i<6){var hs=C.horari[g][i];
-    if(hs)hs.forEach(function(b,j){var d=mn(b[1])-mn(b[0]),pm=b[4]=='p'||/pati|migdia/i.test(b[2]);r+=hb(mn(b[0]),mn(b[1]),'sc',b[2]+(b[3]?'<br><i>'+b[3]+'</i>':''),b[4]=='x'?'background:#C87968;color:#fff':pm?'background:#B7BC9F;color:#35433F':j%2?'background:#6F8C85':'background:#819D96')});
+    if(hs)hs.forEach(function(b,j){var d=mn(b[1])-mn(b[0]),pm=b[4]=='p'||/pati|migdia/i.test(b[2]);r+=hb(mn(b[0]),mn(b[1]),'sc',b[2]+(b[3]?'<br><i>'+b[3]+'</i>':''),(b[4]=='x'?'background:#C87968;color:#fff':b[4]=='d'?'background:#819D96;color:#fff':pm?'background:#B7BC9F;color:#35433F':j%2?'background:#6F8C85':'background:#819D96')+(d<=30?';font-size:9.5px;line-height:1.05;padding-top:1px':''))});
     else r+=hb(mn(C.escola[0]),mn(C.escola[1]),'sc','🏫 Escola')}
    acts(g,i).forEach(function(a){r+=hb(mn(a[2]),mn(a[3]),'',a[4]+'<br>'+a[2]+'–'+a[3],'background:#C87968;color:#fff')});
    r+='</div>'}
@@ -304,11 +307,12 @@ function rb(){try{var x=JSON.parse($('bk').value);if(x&&x.d){S=x;if(!S.t)S.t={};
 var FC=null;
 function wxi(c,d){return c==0?(d?'☀️':'🌙'):c<3?(d?'🌤️':'☁️'):c==3?'☁️':c<50?'🌫️':c<60?'🌦️':c<70?'🌧️':c<80?'🌨️':c<83?'🌧️':c<87?'🌨️':'⛈️'}
 function wdesc(c){return c==0?'cel clar':c<3?'poc ennuvolat':c==3?'cel tapat':c<50?'boira':c<60?'plugim':c<70?'pluja':c<80?'neu':c<83?'ruixats':c<87?'nevades':'tempestes'}
-function ropa(f){var x=f.mx,r=x<10?'abric gruixut, gorro i bufanda':x<15?'abric i jersei':x<19?'jaqueta i roba de màniga llarga':x<24?'roba de màniga llarga fina i una jaqueta lleugera pel matí':x<29?'roba de màniga curta':'roba fresca de màniga curta i gorra',t=r.charAt(0).toUpperCase()+r.slice(1)+'.';
+function ropa(f,dt){var x=f.mx,r=x<10?'abric gruixut, gorro i bufanda':x<15?'abric i jersei':x<19?'jaqueta i roba de màniga llarga':x<24?'roba de màniga llarga fina i una jaqueta lleugera pel matí':x<29?'roba de màniga curta':'roba fresca de màniga curta i gorra',t=r.charAt(0).toUpperCase()+r.slice(1)+'.',sp=C.nenes.map(function(n){var b=spec(n.id,dt);return b?n.nom+' ('+b[2]+')':''}).filter(Boolean);
+ if(sp.length)t+=' 🏃 Roba d’esport: '+sp.join(' i ')+'.';
  if(f.p>=40||(f.c>=51&&f.c<=67)||(f.c>=80&&f.c<=82)||f.c>=95)t+=' ☂️ Agafa el paraigua!';
  if((f.c>=71&&f.c<=77)||(f.c>=85&&f.c<=86))t+=' Botes i guants per la neu.';
  return t}
-function WXB(){if(!FC)return '';var tm=new Date().getHours()>=17,f=FC[tm?1:0];return '<div class="wxb"><span class="wi">'+wxi(f.c,1)+'</span><b>Previsió '+(tm?'de demà':'d’avui')+'</b>'+Math.round(f.mi)+'°–'+Math.round(f.mx)+'° · '+wdesc(f.c)+' · prob. de pluja '+f.p+'%<span class="wr">'+ropa(f)+'</span></div>'}
+function WXB(){if(!FC)return '';var tm=new Date().getHours()>=17,f=FC[tm?1:0];return '<div class="wxb"><span class="wi">'+wxi(f.c,1)+'</span><b>Previsió '+(tm?'de demà':'d’avui')+'</b>'+Math.round(f.mi)+'°–'+Math.round(f.mx)+'° · '+wdesc(f.c)+' · prob. de pluja '+f.p+'%<span class="wr">'+ropa(f,tm?AD(new Date(),1):new Date())+'</span></div>'}
 function GW(){try{var x=new XMLHttpRequest();x.open('GET','https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=2.17&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid&forecast_days=2',true);
  x.onload=function(){try{var d=JSON.parse(x.responseText).daily;FC=[0,1].map(function(i){return {c:d.weathercode[i],mx:d.temperature_2m_max[i],mi:d.temperature_2m_min[i],p:d.precipitation_probability_max[i]||0}});if(CT==0)VA()}catch(e){}};x.send()}catch(e){}}
 GW();setInterval(GW,1800000);
